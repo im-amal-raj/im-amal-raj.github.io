@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: Inria Sans
+- Font Title: Share Tech
 - Font Author: undefined
-- Font Source: https://fonts.gstatic.com/s/inriasans/v14/ptRMTiqXYfZMCOiVj9kQ5O7yKQNute8.ttf
+- Font Source: https://fonts.gstatic.com/s/sharetech/v22/7cHtv4Uyi5K0OeZ7bohUwHoDmTcibrA.ttf
 - Font License: undefined)

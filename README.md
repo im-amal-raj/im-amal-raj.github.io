@@ -12,7 +12,7 @@ I am a passionate student and tech enthusiast with a focus on web development an
 
 ## 🌐 Website
 
-- **Live Site:** [im-amal-raj.github.io/portfolio](https://im-amal-raj.github.io/portfolio)
+- **Live Site:** [im-amal-raj](https://im-amal-raj.github.io)
 
 Built as a static site using custom HTML, CSS, and some JavaScript. No complex frameworks or exhaustive effects—just clean code, performance, and personal flair.
 
@@ -40,7 +40,7 @@ Explore my work to see what I've built and experimented with!
 I am open to freelance, internships, and collaborations. Reach out through:
 
 <div align="center">
-  <a href="https://im-amal-raj.github.io/portfolio/" target="_blank">
+  <a href="https://im-amal-raj.github.io/" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-Visit-blue?style=for-the-badge" alt="Portfolio" />
   </a>
   <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank">

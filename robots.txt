@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Provide the location of the sitemap
-Sitemap: https://im-amal-raj.github.io/portfolio/sitemap.xml
+Sitemap: https://im-amal-raj.github.io/sitemap.xml
