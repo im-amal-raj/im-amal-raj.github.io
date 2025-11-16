@@ -17,19 +17,27 @@ body {
   overflow-x: hidden;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .container {
   display: flex;
   overflow: hidden;
 
-  /* align-items: flex-start; */
   min-height: 100vh;
-  /* padding: 80px 120px; */
   background-image: radial-gradient(
-    /* 1. Size of the circle */ 600px circle at var(--mouse-x) var(--mouse-y),
-    /* 2. Color Stop 1: The center of the spotlight */ rgba(29, 78, 216, 0.19)
-      0%,
-
-    /* 3. Color Stop 2: The edge of the spotlight */ rgba(29, 78, 216, 0) 100%
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(29, 78, 216, 0.19) 0%,
+    rgba(29, 78, 216, 0) 100%
   );
 }
 .sidebar {
@@ -42,6 +50,9 @@ body {
   box-sizing: border-box;
   overflow-y: auto;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .sidebar::-webkit-scrollbar {
   width: 0;
@@ -82,21 +93,7 @@ ul {
   gap: 10px;
 }
 ul li {
-  /* display: inline-flex; */
   flex-direction: row;
-}
-/* NEW STYLES for Font Awesome <i> tags */
-.sidebar ul li a i {
-  font-size: 26px; /* Your new, smaller size */
-  color: white; /* White fill */
-  margin-top: 30px;
-  display: inline-block;
-  transition: transform 0.22s ease, filter 0.22s ease;
-}
-
-.sidebar ul li a i:hover {
-  transform: translateY(-0.4px);
-  filter: drop-shadow(0 0 3px #77d8c1); /* Your hover effect */
 }
 
 .sidebar nav ul {
@@ -118,45 +115,45 @@ ul li {
   align-items: center;
   gap: 18px;
   white-space: nowrap;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, gap 0.3s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link.active {
   color: #e1e8f0;
 }
 .nav-link::before {
   content: "";
   display: inline-block;
-  /* vertical-align: middle;  already using align-items center*/
-
   height: 1px;
   width: 25px;
   background-color: #94a3b8;
   margin-right: 0;
   transform: scaleX(1);
-
-  transition: transform 0.28s ease, background-color 0.28s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-link.active,
 .nav-link:hover {
   color: #e1e8f0;
-  /* filter: drop-shadow(0 0 6px #64ffda); */
 }
 
-.nav-link.active::before,
 .nav-link:hover::before {
-  transform: scaleX(2.2);
-  background-color: #64ffda;
+    width: 55px;
+    background-color: #94a3b8;
+}
+
+.nav-link.active::before {
+  width: 55px;
+  background-color: #e1e8f0;
 }
 
 .main {
   margin-left: 400px;
-  padding: 35px 120px;
+  padding: 90px 120px;
   flex: 1;
   max-width: 900px;
   overflow-x: hidden;
-  scroll-margin-top: 35px;
+  scroll-margin-top: 90px;
 }
 .main p {
   color: #94a3b8;
@@ -171,19 +168,28 @@ ul li {
 }
 
 section {
-  margin-top: 60px;
-  scroll-margin-top: 80px;
+  margin-bottom: 60px;
+  scroll-margin-top: 90px;
 }
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #e1e8f0;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  display: none;
+}
+
+
 .card {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: 14px;
   padding: 20px;
-  margin-bottom: 40px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* padding-top: 55px; */
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   display: flex;
   align-items: flex-start;
 }
@@ -191,33 +197,30 @@ section {
   color: #94a3b8;
   font-size: 0.9rem;
   font-weight: 500;
-
   width: 120px;
   flex-shrink: 0;
   text-align: left;
-
-  top: auto;
-  left: auto;
+  padding-top: 4px; /* Align with text */
 }
 
 .card-content-wrapper {
   flex-grow: 1;
 }
 
-/* 4. Fix Content Margins */
 .card-content-wrapper h4 {
   color: #e6f1ff;
-  margin-top: 0; /* IMPORTANT: Removes default margin to align with date */
-  margin-bottom: 15px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 15px rgba(100, 255, 218, 0.1);
+.card:hover, .card:focus-within {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .card p {
   color: #94a3b8;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  margin-bottom: 15px;
 }
 
 .tags {
@@ -228,45 +231,27 @@ section {
 }
 .tags a {
   color: #64ffda;
+  transition: color 0.3s ease;
 }
-.tags :hover {
-  transform: translateY(-0.7px);
+.tags a:hover {
+  color: white;
 }
 
 .tag {
   background: rgba(100, 255, 218, 0.1);
   color: #64ffda;
-  font-size: 0.9rem;
-  padding: 6px 10px;
+  font-size: 0.85rem;
+  padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(100, 255, 218, 0.05);
+  font-weight: 500;
 }
 
-.arrow a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.arrow a:hover {
-  color: #64ffda;
-}
-
-.arrow a {
-  animation: floatArrow 2s ease-in-out infinite;
-  transition: transform 0.3s ease;
-}
-.arrow a:hover .arrow {
-  transform: translateY(-4px) scale(1.05);
-}
 .project-link {
   text-decoration: none;
   display: block;
+  border-radius: 14px;
 }
 
-/* --- Services Section Styles --- */
 .service-card {
   display: block;
 }
@@ -292,33 +277,132 @@ section {
 }
 
 .service-cta .arrow {
-  animation: floatArrow 2s ease-in-out infinite;
   transition: transform 0.3s ease;
 }
-/* --- Fade-in Scroll Animation --- */
 
-/* 1. Start hidden */
+.service-cta:hover .arrow {
+    transform: translateX(4px);
+}
+
 .fade-in {
   opacity: 0;
-  transform: translateY(20px); /* Start 20px lower */
+  transform: translateY(20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* 2. The visible state */
 .fade-in.is-visible {
   opacity: 1;
-  transform: translateY(0); /* Move back to original position */
+  transform: translateY(0);
 }
-@keyframes floatArrow {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+
+.hero-socials {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.hero-socials a {
+  font-size: 1.75rem;
+  color: #94a3b8;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-socials a:hover {
+  color: #e1e8f0;
+  transform: translateY(-2px);
+}
+
+#faq {
+  padding-top: 2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
+
+.faq-accordion details {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.faq-accordion details:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.faq-accordion summary {
+  padding: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: list-item;
+  color: #e1e8f0;
+  list-style: none;
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+.faq-accordion summary::after {
+  content: '+';
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  color: #64ffda;
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease-out;
+}
+
+.faq-accordion details[open] summary::after {
+  content: '−';
+}
+
+.faq-accordion details[open] summary {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-accordion details p {
+  padding: 1.25rem;
+  margin: 0;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.footer-socials {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-socials a {
+  font-size: 1.5rem;
+  color: #94a3b8; 
+  display: inline-block;
+  padding: 0.25rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #e1e8f0;
+  transform: translateY(-2px);
+}
+
+.site-footer p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
 }
 
 @media (max-width: 1000px) {
@@ -327,11 +411,16 @@ section {
     width: 100%;
     height: auto;
     padding: 60px 30px;
+    justify-content: flex-start;
+  }
+  
+  .section-title {
+      display: block;
   }
 
   .main {
     margin-left: 0;
-    padding: 30px 30px;
+    padding: 30px;
   }
   .container {
     display: block;

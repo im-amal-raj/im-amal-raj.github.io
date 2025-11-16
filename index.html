@@ -75,62 +75,101 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@type": "Person",
-        "name": "Amal Raj",
-        "jobTitle": "Full-Stack Web Developer",
-        "description": "The official portfolio for Amal Raj, a full-stack web developer and student specializing in Python, Django, and Node.js.",
-        "url": "https://im-amal-raj.github.io/",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://im-amal-raj.github.io/images/og-image.png",
-          "width": 1200,
-          "height": 630
+      "@type": "Person",
+      "name": "Amal Raj",
+      "alternateName": ["amal raj", "amal raj web developer", "im-amal-raj"],
+      "jobTitle": "Full-Stack Web Developer",
+      "description": "The official portfolio for Amal Raj, a full-stack web developer and student specializing in Python, Django, and modern web technologies.",
+      "url": "https://im-amal-raj.github.io/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://im-amal-raj.github.io/images/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "sameAs": [
+        "https://github.com/im-amal-raj",
+        "https://www.linkedin.com/in/im-amal-raj/",
+        "https://dev.to/im-amal-raj",
+        "https://www.hackerearth.com/@im-amal-raj",
+        "https://im-amal-raj.carrd.co/",
+        "https://gitlab.com/im-amal-raj",
+        "https://www.kaggle.com/imamalraj",
+        "https://stackoverflow.com/users/31883145/im-amal-raj",
+        "httpsS://x.com/imamalraj"
+      ],
+      "knowsAbout": [
+        "Full-Stack Development", "Web Development", "Python", "Django", "JavaScript", "Node.js", "HTML", "CSS", "API Integration", "SEO", "Branding"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Calicut University"
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Full-Stack Web Development",
+            "description": "Building complete, end-to-end web applications using Python/Django or Node.js, from database design to front-end implementation."
+          }
         },
-        "sameAs": [
-          "https://github.com/im-amal-raj",
-          "https://www.linkedin.com/in/im-amal-raj/",
-          "https://dev.to/im-amal-raj",
-          "https://www.hackerearth.com/@im-amal-raj"
-        ],
-        "knowsAbout": [
-          "Full-Stack Development",
-          "Web Development",
-          "Python",
-          "Django",
-          "JavaScript",
-          "Node.js",
-          "HTML",
-          "CSS",
-          "API Integration"
-        ],
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Calicut University"
-        },
-        "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Discord Bot & API Integration",
+            "description": "Building custom utility bots for Discord (using Discord.py or Discord.js) and integrating third-party APIs."
+          }
+        }
+      ],
+      "subjectOf": {
+        "@type": "FAQPage",
+        "mainEntity": [
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Full-Stack Web Development",
-              "description": "Building complete, end-to-end web applications using Python/Django or Node.js, from database design to front-end implementation."
+            "@type": "Question",
+            "name": "What is your primary tech stack?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I am a full-stack developer with a strong focus on Python. My primary stack is Django (or Django REST Framework) for the backend, and HTML, CSS, and vanilla JavaScript for the front-end. I am also proficient in Node.js."
             }
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Custom Discord Bot & API Integration",
-              "description": "Building custom utility bots for Discord (using Discord.py or Discord.js) and integrating third-party APIs."
+            "@type": "Question",
+            "name": "Are you currently open to work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, I am actively seeking full-time and internship opportunities for a Full-Stack Developer or Python Developer role. I am available to start immediately."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are you currently learning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I am always building. I am currently deepening my front-end skills by learning React to complement my Django-based backends, and I'm exploring modern DevOps practices like containerization with Docker."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kind of projects are you passionate about?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I am passionate about building full-stack applications that solve a real-world problem. I particularly enjoy the challenge of designing and building RESTful APIs, as seen in my RestroBill and Event Organizer projects. As a Python developer, I love seeing a project through from the database logic to the final UI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you approach learning new technologies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "My philosophy is 'learn by building.' I start with the official documentation to understand the fundamentals, then immediately apply what I've learned to a small project. This hands-on approach, which I've used for both Django and Discord.js, helps me solidify my understanding and discover practical use cases."
             }
           }
         ]
       }
     }
   </script>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CXNPQ0GGX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -164,55 +203,22 @@
             <li>
               <a href="#writing" class="nav-link">Writing</a>
             </li>
+            <li>
+              <a href="#faq" class="nav-link">FAQ</a>
+            </li>
           </ul>
         </nav>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/im-amal-raj"
-              target="_blank"
-              aria-label="GitHub"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/im-amal-raj/"
-              target="_blank"
-              aria-label="LinkedIn"
-            >
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://mail.google.com/mail/u/0/?fs=1&to=amalMraj@proton.me&tf=cm"
-              target="_blank"
-              aria-label="Email"
-            >
-              <i class="fas fa-envelope"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://dev.to/im-amal-raj"
-              target="_blank"
-              aria-label="Dev.to"
-            >
-              <i class="fab fa-dev"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.hackerearth.com/@im-amal-raj"
-              target="_blank"
-              aria-label="HackerEarth"
-            >
-              <i class="fas fa-laptop-code"></i>
-            </a>
-          </li>
-        </ul>
+        <div class="hero-socials">
+  <a href="https://github.com/im-amal-raj" target="_blank" aria-label="GitHub">
+    <i class="fa-brands fa-github"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+  <a href="https://mail.google.com/mail/u/0/?fs=1&to=amalMraj@proton.me&tf=cm" target="_blank" aria-label="Email">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+</div>
       </div>
       <div class="main">
         <section id="about">
@@ -233,7 +239,6 @@
               <a href="#projects">Full-Stack Restaurant Billing App (Django)</a>
             </li>
             <li>
-              <!-- REVERTED THIS LINK TEXT -->
               <a href="#projects"
                 >Full-Stack Event Management App (Python/Django)</a
               >
@@ -494,6 +499,51 @@
             </div>
           </a>
         </section>
+        <section id="faq">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        
+          <div class="faq-accordion">
+            <details>
+              <summary>What is your primary tech stack?</summary>
+              <p>I am a full-stack developer with a strong focus on Python. My primary stack is **Django** (or Django REST Framework) for the backend, and **HTML, CSS, and vanilla JavaScript** for the front-end. I am also proficient in Node.js.</p>
+            </details>
+        
+            <details>
+              <summary>Are you currently open to work?</summary>
+              <p>Yes, I am actively seeking full-time and internship opportunities for a Full-Stack Developer or Python Developer role. I am available to start immediately.</p>
+            </details>
+        
+            <details>
+              <summary>What are you currently learning?</summary>
+              <p>I am always building. I am currently deepening my front-end skills by learning **React** to complement my Django-based backends, and I'm exploring modern DevOps practices like containerization with **Docker**.</p>
+            </details>
+        
+            <details>
+              <summary>What kind of projects are you passionate about?</summary>
+              <p>I am passionate about building full-stack applications that solve a real-world problem. I particularly enjoy the challenge of designing and building RESTful APIs, as seen in my **RestroBill** and **Event Organizer** projects. As a Python developer, I love seeing a project through from the database logic to the final UI.</p>
+            </details>
+
+            <details>
+              <summary>How do you approach learning new technologies?</summary>
+              <p>My philosophy is "learn by building." I start with the official documentation to understand the fundamentals, then immediately apply what I've learned to a small project. This hands-on approach, which I've used for both Django and Discord.js, helps me solidified my understanding and discover practical use cases.</p>
+            </details>
+          </div>
+        </section>
+        <footer class="site-footer">
+            <div class="footer-socials">
+              <a href="https://github.com/im-amal-raj" target="_blank" aria-label="GitHub" rel="me"><i class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" aria-label="LinkedIn" rel="me"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://mail.google.com/mail/u/0/?fs=1&to=amalMraj@proton.me&tf=cm" target="_blank" aria-label="Email" rel="me"><i class="fa-solid fa-envelope"></i></a>
+              <a href="https://dev.to/im-amal-raj" target="_blank" aria-label="Dev.to" rel="me"><i class="fa-brands fa-dev"></i></a>
+              <a href="https://www.hackerearth.com/@im-amal-raj" target="_blank" aria-label="HackerEarth" rel="me"><i class="fas fa-laptop-code"></i></a>
+              <a href="https://im-amal-raj.carrd.co/" target="_blank" aria-label="Carrd" rel="me"><i class="fa-solid fa-id-card"></i></a>
+              <a href="https://gitlab.com/im-amal-raj" target="_blank" aria-label="Gitlab" rel="me"><i class="fa-brands fa-square-gitlab"></i></a>
+              <a href="https://www.kaggle.com/imamalraj" target="_blank" aria-label="Kaggle" rel="me"><i class="fa-brands fa-kaggle"></i></a>
+              <a href="https://stackoverflow.com/users/31883145/im-amal-raj" target="_blank" aria-label="Stack-Overflow" rel="me"><i class="fa-brands fa-stack-overflow"></i></a>
+              <a href="https://x.com/imamalraj" target="_blank" aria-label="X-twitter" rel="me"><i class="fa-brands fa-square-x-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Amal Raj. All rights reserved.</p>
+        </footer>
       </div>
     </div>
     <script src="js/script.js"></script>

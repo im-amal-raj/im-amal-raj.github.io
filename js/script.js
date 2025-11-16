@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- CLICK TO SET ACTIVE (Keeps the sidebar snappy) ---
   // We keep this so the link becomes active *immediately* on click,
-  // before the scroll has even finished.
+  -  // before the scroll has even finished.
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.forEach((l) => l.classList.remove("active"));
