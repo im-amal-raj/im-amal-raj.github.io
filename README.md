@@ -67,3 +67,6 @@ All code and content is my original work. Design inspiration referenced above. P
 ---
 
 *Thanks for visiting! Feel free to browse, connect, or explore my projects!*
+
+---
+*made with ❤️ by <a href = "https://github.com/im-amal-raj">im-amal-raj</a>
