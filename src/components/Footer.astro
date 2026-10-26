@@ -10,10 +10,10 @@ const currentYear = new Date().getFullYear();
         <span class="brand-text">Amal Raj</span>
       </div>
       <p class="footer-tagline text-footnote">
-        The Anti-Bloat Engineer. Apple design principles on Linux & Wayland. Zero-cost abstractions.
+        The Anti-Bloat Engineer. Fluid interface physics on Linux & Wayland. Zero-cost abstractions.
       </p>
       <p class="copyright text-caption-1">
-        © {currentYear} Amal Raj. Hosted on GitHub Pages.
+        © {currentYear} Amal Raj. Built with Astro. Hosted on GitHub Pages.
       </p>
     </div>
 
@@ -26,11 +26,11 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <div class="footer-column">
-        <span class="column-title">Creator & Social</span>
-        <a href="https://www.youtube.com/@amalrajm" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube Devlogs</a>
+        <span class="column-title">Connect & Links</span>
         <a href="https://github.com/im-amal-raj" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
         <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
-        <a href="mailto:amalMraj@proton.me" class="footer-link">Contact Email</a>
+        <a href="mailto:amalrajm.dev@gmail.com" class="footer-link">Contact Email</a>
+        <span class="footer-link muted">YouTube (Coming Soon)</span>
       </div>
     </div>
   </div>
@@ -112,6 +112,11 @@ const currentYear = new Date().getFullYear();
 
   .footer-link:hover {
     color: var(--text-primary);
+  }
+
+  .footer-link.muted {
+    color: var(--text-tertiary);
+    font-style: italic;
   }
 
   @media (max-width: 640px) {

@@ -34,28 +34,19 @@ const articles = (await getCollection('writing')).sort(
     </div>
   </section>
 
-  <!-- YouTube & Devlog Content Hub -->
+  <!-- Systems Writing & Devlogs -->
   <section id="writing" class="section-block">
     <div class="section-header">
       <div class="header-text">
-        <h2 class="text-title-1 section-title">Devlogs & Systems Writing</h2>
+        <h2 class="text-title-1 section-title">Systems Devlogs & Engineering</h2>
         <p class="text-body section-sub">
           Deep dives into audio engineering on Linux, Wayland compositor internals, and memory profiling.
         </p>
       </div>
 
-      <a
-        href="https://www.youtube.com/@amalrajm"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="channel-cta-link"
-      >
-        <span>YouTube Channel</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
-      </a>
+      <div class="pill-badge">
+        <span>Video Companion (In Production)</span>
+      </div>
     </div>
 
     <div class="content-grid">
@@ -86,9 +77,9 @@ const articles = (await getCollection('writing')).sort(
 
         <div class="ethos-item">
           <span class="ethos-num">02</span>
-          <h3 class="ethos-item-title text-headline">Apple HIG Fidelity</h3>
+          <h3 class="ethos-item-title text-headline">Fluid Interface Physics</h3>
           <p class="text-body ethos-desc">
-            Interfaces must behave like physical materials. Strict 8pt grid, continuous squircle curvature, and interruptible damped spring physics ($\zeta = 0.85$).
+            Interfaces must behave like physical materials. Strict 8pt spatial grid, continuous G2 squircle curvature, and interruptible damped spring physics ($\zeta = 0.85$).
           </p>
         </div>
 
@@ -125,25 +116,6 @@ const articles = (await getCollection('writing')).sort(
   .section-sub {
     max-width: 600px;
     margin-top: var(--space-1);
-  }
-
-  .channel-cta-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--accent-blue);
-    padding: 6px 12px;
-    border-radius: var(--radius-pill);
-    background: var(--accent-blue-subtle);
-    border: 1px solid rgba(10, 132, 255, 0.2);
-    transition: background var(--spring-micro), transform var(--spring-micro);
-  }
-
-  .channel-cta-link:hover {
-    background: rgba(10, 132, 255, 0.22);
-    transform: translateY(-1px);
   }
 
   .projects-grid {

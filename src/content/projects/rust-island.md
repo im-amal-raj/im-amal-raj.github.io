@@ -1,10 +1,10 @@
 ---
 title: "rust-island"
-tagline: "Authentic Apple-grade Dynamic Island on Wayland built in Rust & Slint."
+tagline: "Fluid dynamic desktop capsule on Wayland built in native Rust & Slint with continuous squircle geometry and micro-damped springs."
 category: "Systems / Wayland"
 featured: true
 order: 1
-heroImage: "/images/projects/island_expanded.png"
+heroImage: "/images/projects/rust-island-capsule.svg"
 badge: "Featured"
 github: "https://github.com/im-amal-raj"
 metrics:
@@ -22,11 +22,11 @@ tech:
   - "PipeWire"
 ---
 
-## The Vision: Apple Polish Without Electron Bloat
+## Fluid Physics & Continuous Geometry Without Electron Bloat
 
 Modern Linux desktop environments often compromise on either visual fluidity or resource efficiency. Heavy desktop overlays frequently pull hundreds of megabytes of RAM while stuttering during animated layout changes.
 
-**`rust-island`** brings authentic Apple HIG design, continuous curvature squircles, and mathematically calibrated spring physics ($\text{response} = 0.35\text{s}, \zeta = 0.85$) to modern Wayland compositors (such as Umbriel and Niri) with near-zero resource impact.
+**`rust-island`** brings authentic fluid interface physics, continuous curvature squircles (G2 curvature), and mathematically calibrated spring equations ($\text{response} = 0.35\text{s}, \zeta = 0.85$) to modern Wayland compositors (such as Umbriel and Niri) with near-zero resource impact.
 
 ### Architectural Highlights
 

@@ -24,7 +24,7 @@ export async function GET(context: { site?: URL }) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Amal Raj — Systems Devlogs & Engineering</title>
-    <description>Apple HIG design on Linux, WWDC fluid physics, and high-performance Rust tools.</description>
+    <description>Fluid interface physics on Linux, continuous squircle geometry, and high-performance Rust tools.</description>
     <link>${site}</link>
     <atom:link href="${site}/rss.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>

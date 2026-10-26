@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="canvasGlow" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#141418" />
+      <stop offset="100%" stop-color="#050507" />
+    </radialGradient>
+
+    <!-- Capsule Surface Gradient -->
+    <linearGradient id="islandSurface" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242428" />
+      <stop offset="100%" stop-color="#151518" />
+    </linearGradient>
+
+    <!-- Inner Highlight -->
+    <linearGradient id="highlightGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.18)" />
+      <stop offset="30%" stop-color="rgba(255, 255, 255, 0.05)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.0)" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="capsuleShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.8" />
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Surface -->
+  <rect width="600" height="320" fill="url(#canvasGlow)" />
+
+  <!-- Subtle Ambient Grid Lines -->
+  <path d="M0 80 H600 M0 160 H600 M0 240 H600 M150 0 V320 M300 0 V320 M450 0 V320" stroke="rgba(255, 255, 255, 0.02)" stroke-width="1" />
+
+  <!-- Dynamic Island Expanded Capsule -->
+  <g transform="translate(90, 48)" filter="url(#capsuleShadow)">
+    <!-- Base Capsule (G2 Continuous Squircle approximation) -->
+    <rect width="420" height="210" rx="34" ry="34" fill="url(#islandSurface)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+    <!-- Liquid Glass Top Highlight -->
+    <rect x="1" y="1" width="418" height="100" rx="33" ry="33" fill="url(#highlightGlow)" />
+
+    <!-- Island Top Bar (Compact Header) -->
+    <circle cx="34" cy="34" r="5" fill="#30d158" />
+    <text x="50" y="38" fill="rgba(255, 255, 255, 0.9)" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="-0.2">rust-island</text>
+    <rect x="330" y="24" width="60" height="20" rx="10" fill="rgba(255, 255, 255, 0.06)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <text x="360" y="38" text-anchor="middle" fill="#0a84ff" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="600">Umbriel</text>
+
+    <!-- Expanded Body: Media & Audio Pipeline Controls -->
+    <!-- Album Art Thumbnail -->
+    <rect x="26" y="66" width="56" height="56" rx="14" ry="14" fill="#2c2c30" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <polygon points="50,86 50,102 64,94" fill="rgba(255, 255, 255, 0.7)" />
+
+    <!-- Track & Telemetry Info -->
+    <text x="96" y="86" fill="rgba(255, 255, 255, 0.95)" font-family="-apple-system, system-ui, sans-serif" font-size="14" font-weight="600">PipeWire Low-Latency Core</text>
+    <text x="96" y="106" fill="rgba(235, 235, 245, 0.5)" font-family="-apple-system, system-ui, sans-serif" font-size="12">48kHz · Buffer 64 spl · 1.3ms</text>
+
+    <!-- Audio Visualizer Waveform -->
+    <g transform="translate(320, 78)">
+      <rect x="0" y="12" width="3" height="16" rx="1.5" fill="#0a84ff" opacity="0.8" />
+      <rect x="7" y="4" width="3" height="24" rx="1.5" fill="#0a84ff" />
+      <rect x="14" y="0" width="3" height="32" rx="1.5" fill="#0a84ff" />
+      <rect x="21" y="8" width="3" height="20" rx="1.5" fill="#0a84ff" />
+      <rect x="28" y="2" width="3" height="28" rx="1.5" fill="#0a84ff" />
+      <rect x="35" y="14" width="3" height="14" rx="1.5" fill="#0a84ff" opacity="0.8" />
+      <rect x="42" y="6" width="3" height="22" rx="1.5" fill="#0a84ff" />
+      <rect x="49" y="16" width="3" height="10" rx="1.5" fill="#0a84ff" opacity="0.6" />
+    </g>
+
+    <!-- Progress / Slider Bar -->
+    <rect x="26" y="136" width="368" height="4" rx="2" fill="rgba(255, 255, 255, 0.1)" />
+    <rect x="26" y="136" width="210" height="4" rx="2" fill="#0a84ff" />
+    <circle cx="236" cy="138" r="6" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))" />
+
+    <!-- Bottom Controls & System Pills -->
+    <g transform="translate(26, 156)">
+      <!-- RAM Badge -->
+      <rect x="0" y="6" width="90" height="24" rx="12" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1" />
+      <text x="45" y="22" text-anchor="middle" fill="rgba(235, 235, 245, 0.7)" font-family="monospace" font-size="10" font-weight="600">RAM: 16.4 MB</text>
+
+      <!-- FPS Badge -->
+      <rect x="100" y="6" width="84" height="24" rx="12" fill="rgba(48, 209, 88, 0.1)" stroke="rgba(48, 209, 88, 0.2)" stroke-width="1" />
+      <text x="142" y="22" text-anchor="middle" fill="#30d158" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="600">120 FPS Live</text>
+
+      <!-- Physics Mode -->
+      <rect x="194" y="6" width="174" height="24" rx="12" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1" />
+      <text x="281" y="22" text-anchor="middle" fill="rgba(235, 235, 245, 0.6)" font-family="-apple-system, system-ui, sans-serif" font-size="10">Damped Spring (ζ=0.85)</text>
+    </g>
+  </g>
+</svg>
