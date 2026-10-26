@@ -6,7 +6,7 @@ featured: true
 order: 1
 heroImage: "/images/projects/rust-island.png"
 badge: "Daily Driver"
-github: "https://github.com/im-amal-raj"
+github: "https://github.com/im-amal-raj/DYNAMIC-ISLAND"
 tech:
   - "Rust"
   - "Slint UI"
