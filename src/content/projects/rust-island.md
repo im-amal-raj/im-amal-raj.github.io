@@ -1,18 +1,18 @@
 ---
 title: "rust-island"
-tagline: "Fluid dynamic desktop capsule on Wayland built in native Rust & Slint with continuous squircle geometry and micro-damped springs."
-category: "Systems / Wayland"
+tagline: "A native Dynamic Island for Wayland compositors (Umbriel / Niri). Proves Linux desktop UI can have fluid spring physics and compact elegance without running a Chromium instance."
+category: "Desktop Shell"
 featured: true
 order: 1
 heroImage: "/images/projects/rust-island-capsule.svg"
 badge: "Featured"
 github: "https://github.com/im-amal-raj"
 metrics:
-  - label: "RAM Usage"
-    value: "< 18 MB"
+  - label: "RAM Footprint"
+    value: "18 MB"
   - label: "Spring Physics"
     value: "120 FPS"
-  - label: "Engine"
+  - label: "Binary Engine"
     value: "Rust + Slint"
 tech:
   - "Rust"
@@ -22,15 +22,15 @@ tech:
   - "PipeWire"
 ---
 
-## Fluid Physics & Continuous Geometry Without Electron Bloat
+## The Problem: Electron Wrapping as Desktop Policy
 
-Modern Linux desktop environments often compromise on either visual fluidity or resource efficiency. Heavy desktop overlays frequently pull hundreds of megabytes of RAM while stuttering during animated layout changes.
+Modern Linux desktop utilities frequently pull 350MB+ of RAM and run entire headless Chromium instances just to draw a floating pill or status widget. Unused RAM isn't "free"—it drains laptop battery, causes garbage collection stutter, and introduces latency during window switches.
 
-**`rust-island`** brings authentic fluid interface physics, continuous curvature squircles (G2 curvature), and mathematically calibrated spring equations ($\text{response} = 0.35\text{s}, \zeta = 0.85$) to modern Wayland compositors (such as Umbriel and Niri) with near-zero resource impact.
+**`rust-island`** proves that desktop Linux can deliver macOS-grade visual craft, continuous squircle geometry, and fluid spring physics while compiling down to a lean native binary that idles silently at 18MB RSS.
 
-### Architectural Highlights
+### Key Architectural Choices
 
-- **Rust & Slint UI Core**: Compiles down to native machine code with GPU-accelerated rendering through FemtoVG/Skia.
-- **Wayland Layer Shell**: Renders smoothly above windows with transparent alpha channels and live blur surfaces (`rgba(28, 28, 30, 0.75)`).
-- **Sub-18MB Memory Footprint**: Idles silently without background garbage collection or browser engine overhead.
-- **D-Bus & PipeWire Integration**: Real-time volume feedback, media playback controls, Wi-Fi status, and system clipboard tracking.
+- **Compiled Slint Core**: GPU-accelerated rendering through FemtoVG/Skia with zero WebKit or Chromium dependencies.
+- **Wayland Layer Shell**: Sits natively above compositors (Umbriel, Niri) with hardware alpha blending and live blur.
+- **Micro-Damped Springs**: UI transitions inherit physical exit velocity instead of running rigid fixed-duration CSS animations.
+- **Zero Background Polling**: D-Bus event hooks for audio, battery, Wi-Fi, and clipboard updates eliminate continuous CPU wakeups.

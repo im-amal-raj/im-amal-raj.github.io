@@ -20,9 +20,9 @@ const articles = (await getCollection('writing')).sort(
   <section id="projects" class="section-block">
     <div class="section-header">
       <div class="header-text">
-        <h2 class="text-title-1 section-title">Systems & Architecture</h2>
+        <h2 class="text-title-1 section-title">Featured Systems & Tools</h2>
         <p class="text-body section-sub">
-          High-performance tools, native Wayland shells, and micro-benchmarked developer utilities.
+          Framed by the problems they solve: native compiled binaries, zero-key CLI intelligence, and kernel-level audio DSP.
         </p>
       </div>
     </div>
@@ -38,14 +38,14 @@ const articles = (await getCollection('writing')).sort(
   <section id="writing" class="section-block">
     <div class="section-header">
       <div class="header-text">
-        <h2 class="text-title-1 section-title">Systems Devlogs & Engineering</h2>
+        <h2 class="text-title-1 section-title">Systems Devlogs & Benchmarks</h2>
         <p class="text-body section-sub">
-          Deep dives into audio engineering on Linux, Wayland compositor internals, and memory profiling.
+          Deep dives into Linux audio calibration, Wayland layer shells, and constraint-tested optimizations.
         </p>
       </div>
 
       <div class="pill-badge">
-        <span>Video Companion (In Production)</span>
+        <span>Devlogs & Receipts</span>
       </div>
     </div>
 
@@ -61,33 +61,36 @@ const articles = (await getCollection('writing')).sort(
     <div class="glass-panel ethos-card">
       <div class="ethos-header">
         <div class="pill-badge">
-          <span>Engineering Manifesto</span>
+          <span>Personal Manifesto</span>
         </div>
-        <h2 class="text-title-2 ethos-title">The Anti-Bloat Doctrine</h2>
+        <h2 class="text-title-2 ethos-title">The Craft of Apple, The Freedom of Linux</h2>
+        <p class="text-body ethos-intro">
+          We shouldn't have to choose between software freedom and software craft. I take inspiration from unified memory architectures, silence, ruthless constraint optimization, and typographic discipline—and bring them to the open Linux desktop.
+        </p>
       </div>
 
       <div class="ethos-grid">
         <div class="ethos-item">
           <span class="ethos-num">01</span>
-          <h3 class="ethos-item-title text-headline">Zero Electron Bloat</h3>
+          <h3 class="ethos-item-title text-headline">The Anti-Bloat Doctrine</h3>
           <p class="text-body ethos-desc">
-            Desktops deserve native compilation. Using Rust, Slint, and Wayland Layer Shell instead of 400MB web wrappers running background Chromium processes.
+            Software should respect the silicon it runs on. If a utility can run in 15MB of memory with zero garbage-collection pauses, shipping a 300MB runtime is engineering failure.
           </p>
         </div>
 
         <div class="ethos-item">
           <span class="ethos-num">02</span>
-          <h3 class="ethos-item-title text-headline">Fluid Interface Physics</h3>
+          <h3 class="ethos-item-title text-headline">Design as an Engineering Feature</h3>
           <p class="text-body ethos-desc">
-            Interfaces must behave like physical materials. Strict 8pt spatial grid, continuous G2 squircle curvature, and interruptible damped spring physics ($\zeta = 0.85$).
+            Polish isn't cosmetic; it reduces cognitive friction. Fluid gestures, tactile click targets, and typographic hierarchy belong in Linux terminals and Wayland desktops just as much as in macOS.
           </p>
         </div>
 
         <div class="ethos-item">
           <span class="ethos-num">03</span>
-          <h3 class="ethos-item-title text-headline">Constraint-First Testing</h3>
+          <h3 class="ethos-item-title text-headline">Receipts Over Speculation</h3>
           <p class="text-body ethos-desc">
-            Testing performance under realistic resource limits. If an audio pipeline, CLI tool, or desktop overlay cannot survive tight constraints, it is refactored.
+            Every claim must be backed by terminal logs, frame-time graphs, and reproducible benchmarks. Hardware that sips battery while feeling alive under your fingers.
           </p>
         </div>
       </div>
@@ -144,6 +147,14 @@ const articles = (await getCollection('writing')).sort(
 
   .ethos-title {
     color: var(--text-primary);
+  }
+
+  .ethos-intro {
+    max-width: 720px;
+    margin-top: var(--space-1);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--text-secondary);
   }
 
   .ethos-grid {
