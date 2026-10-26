@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import MetricsStrip from '../components/MetricsStrip.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ContentCard from '../components/ContentCard.astro';
 
@@ -14,15 +13,14 @@ const articles = (await getCollection('writing')).sort(
 
 <BaseLayout>
   <Hero />
-  <MetricsStrip />
 
   <!-- Featured Projects -->
   <section id="projects" class="section-block">
     <div class="section-header">
       <div class="header-text">
-        <h2 class="text-title-1 section-title">Featured Systems & Tools</h2>
+        <h2 class="text-title-1 section-title">Projects I'm Building</h2>
         <p class="text-body section-sub">
-          Framed by the problems they solve: native compiled binaries, zero-key CLI intelligence, and kernel-level audio DSP.
+          Native Wayland utilities, terminal tools, and audio experiments built to solve my own daily workflow friction.
         </p>
       </div>
     </div>
@@ -38,14 +36,14 @@ const articles = (await getCollection('writing')).sort(
   <section id="writing" class="section-block">
     <div class="section-header">
       <div class="header-text">
-        <h2 class="text-title-1 section-title">Systems Devlogs & Benchmarks</h2>
+        <h2 class="text-title-1 section-title">Devlogs & Systems Notes</h2>
         <p class="text-body section-sub">
-          Deep dives into Linux audio calibration, Wayland layer shells, and constraint-tested optimizations.
+          Notes and benchmarks from building desktop shells, calibrating Linux audio, and profiling memory usage.
         </p>
       </div>
 
       <div class="pill-badge">
-        <span>Devlogs & Receipts</span>
+        <span>Articles & Receipts</span>
       </div>
     </div>
 
@@ -56,41 +54,41 @@ const articles = (await getCollection('writing')).sort(
     </div>
   </section>
 
-  <!-- Systems Ethos Section -->
-  <section id="system" class="section-block ethos-block">
+  <!-- About & Philosophy Section -->
+  <section id="about" class="section-block ethos-block">
     <div class="glass-panel ethos-card">
       <div class="ethos-header">
         <div class="pill-badge">
-          <span>Personal Manifesto</span>
+          <span>How I Work</span>
         </div>
-        <h2 class="text-title-2 ethos-title">The Craft of Apple, The Freedom of Linux</h2>
+        <h2 class="text-title-2 ethos-title">Building for Speed, Feel, and Freedom</h2>
         <p class="text-body ethos-intro">
-          We shouldn't have to choose between software freedom and software craft. I take inspiration from unified memory architectures, silence, ruthless constraint optimization, and typographic discipline—and bring them to the open Linux desktop.
+          I'm not writing corporate whitepapers; I vibe code tools that solve my own daily friction on Linux. Here are the simple principles that guide what I build:
         </p>
       </div>
 
       <div class="ethos-grid">
         <div class="ethos-item">
           <span class="ethos-num">01</span>
-          <h3 class="ethos-item-title text-headline">The Anti-Bloat Doctrine</h3>
+          <h3 class="ethos-item-title text-headline">Respecting the Hardware</h3>
           <p class="text-body ethos-desc">
-            Software should respect the silicon it runs on. If a utility can run in 15MB of memory with zero garbage-collection pauses, shipping a 300MB runtime is engineering failure.
+            I started tinkering on older machines where every megabyte mattered. Today it feels common for simple apps to consume hundreds of megabytes of RAM. I prefer lean, native binaries that sip battery and run silently.
           </p>
         </div>
 
         <div class="ethos-item">
           <span class="ethos-num">02</span>
-          <h3 class="ethos-item-title text-headline">Design as an Engineering Feature</h3>
+          <h3 class="ethos-item-title text-headline">Design as a Feature</h3>
           <p class="text-body ethos-desc">
-            Polish isn't cosmetic; it reduces cognitive friction. Fluid gestures, tactile click targets, and typographic hierarchy belong in Linux terminals and Wayland desktops just as much as in macOS.
+            I love Linux for user ownership, but desktop Linux has often treated visual polish as an afterthought. You shouldn't have to choose between software freedom and fluid interface feedback, good typography, and clean aesthetics.
           </p>
         </div>
 
         <div class="ethos-item">
           <span class="ethos-num">03</span>
-          <h3 class="ethos-item-title text-headline">Receipts Over Speculation</h3>
+          <h3 class="ethos-item-title text-headline">Real Receipts Over Theories</h3>
           <p class="text-body ethos-desc">
-            Every claim must be backed by terminal logs, frame-time graphs, and reproducible benchmarks. Hardware that sips battery while feeling alive under your fingers.
+            Every optimization claim should be proven with real terminal logs, frame-time checks, and simple reproducible setups—not marketing buzzwords.
           </p>
         </div>
       </div>
@@ -100,7 +98,7 @@ const articles = (await getCollection('writing')).sort(
 
 <style>
   .section-block {
-    padding: var(--space-10) 0;
+    padding: var(--space-8) 0;
   }
 
   .section-header {
@@ -108,29 +106,33 @@ const articles = (await getCollection('writing')).sort(
     align-items: flex-end;
     justify-content: space-between;
     gap: var(--space-4);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-5);
     flex-wrap: wrap;
   }
 
   .section-title {
     color: var(--text-primary);
+    font-size: 26px;
+    letter-spacing: -0.3px;
   }
 
   .section-sub {
     max-width: 600px;
     margin-top: var(--space-1);
+    font-size: 15px;
+    line-height: 23px;
   }
 
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-6);
+    gap: var(--space-5);
   }
 
   .content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
 
   .ethos-card {
@@ -147,12 +149,13 @@ const articles = (await getCollection('writing')).sort(
 
   .ethos-title {
     color: var(--text-primary);
+    font-size: 22px;
   }
 
   .ethos-intro {
     max-width: 720px;
     margin-top: var(--space-1);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     color: var(--text-secondary);
   }
@@ -178,17 +181,19 @@ const articles = (await getCollection('writing')).sort(
 
   .ethos-item-title {
     color: var(--text-primary);
+    font-size: 16px;
   }
 
   .ethos-desc {
     font-size: 14px;
     line-height: 22px;
+    color: var(--text-secondary);
   }
 
   @media (max-width: 768px) {
     .ethos-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-6);
+      gap: var(--space-5);
     }
     .ethos-card {
       padding: var(--space-5);

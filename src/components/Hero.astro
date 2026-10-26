@@ -8,45 +8,47 @@
       <span>Kerala, India</span>
     </div>
     <div class="pill-badge">
-      <span>Wayland · Rust · Slint</span>
+      <span>Linux · Rust · Wayland</span>
     </div>
     <div class="pill-badge">
-      <span>Linux Performance & Audio DSP</span>
+      <span>Building in the open</span>
     </div>
   </div>
 
-  <h1 class="hero-title text-large-title">
-    Amal Raj
-  </h1>
+  <div class="hero-main">
+    <h1 class="hero-title text-large-title">
+      Amal Raj
+    </h1>
 
-  <p class="hero-tagline text-headline">
-    Systems, Rust, and the pursuit of anti-bloat engineering on Linux.
-  </p>
+    <p class="hero-tagline text-headline">
+      Tinkering with systems, Rust, and lean desktop tools on Linux.
+    </p>
 
-  <p class="hero-subcopy text-body">
-    Modern software became lazy the day developers decided memory was cheap. I build native Wayland desktop tools, lean Rust utilities, and constraint-tested systems that prove you can have macOS-level aesthetic craft without sacrificing open-source freedom.
-  </p>
+    <p class="hero-bio text-body">
+      I grew up on hardware where every megabyte and background process mattered. When I find software that feels sluggish, bloated, or rough around the edges, I usually sit down and vibe code my own version—building native Wayland utilities and CLI tools that look clean, feel fast, and respect your machine.
+    </p>
 
-  <div class="hero-cta-group">
-    <a href="#projects" class="button-primary">
-      <span>Explore Projects</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </a>
+    <div class="hero-cta-group">
+      <a href="#projects" class="button-primary">
+        <span>View Projects</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
 
-    <a href="#writing" class="button-secondary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
-        <path d="M6 6h10"></path>
-        <path d="M6 10h10"></path>
-      </svg>
-      <span>Read Devlogs</span>
-    </a>
+      <a href="#writing" class="button-secondary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+          <path d="M6 6h10"></path>
+          <path d="M6 10h10"></path>
+        </svg>
+        <span>Devlogs & Notes</span>
+      </a>
 
-    <a href="#system" class="button-glass">
-      <span>The Manifesto</span>
-    </a>
+      <a href="#about" class="button-glass">
+        <span>About & Ethos</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -74,27 +76,34 @@
     display: inline-block;
   }
 
+  .hero-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 680px;
+  }
+
   .hero-title {
     color: var(--text-primary);
-    font-size: clamp(34px, 5vw, 44px);
+    font-size: clamp(34px, 5vw, 42px);
     line-height: 1.15;
-    margin-top: var(--space-2);
+    margin-top: var(--space-1);
+    letter-spacing: -0.5px;
   }
 
   .hero-tagline {
     color: var(--text-primary);
-    font-weight: 600;
-    max-width: 680px;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: -0.3px;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 27px;
+    letter-spacing: -0.2px;
   }
 
-  .hero-subcopy {
-    max-width: 640px;
+  .hero-bio {
     color: var(--text-secondary);
     font-size: 16px;
     line-height: 26px;
+    margin-top: 2px;
   }
 
   .hero-cta-group {
@@ -109,15 +118,15 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    min-height: 44px;
-    padding: 0 20px;
+    min-height: 42px;
+    padding: 0 18px;
     background: var(--accent-blue);
     color: #ffffff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: -0.2px;
     border-radius: var(--radius-pill);
-    box-shadow: 0 4px 14px -2px rgba(10, 132, 255, 0.45);
+    box-shadow: 0 4px 14px -2px rgba(10, 132, 255, 0.4);
     transition: transform var(--spring-micro), background var(--spring-micro);
   }
 
@@ -134,20 +143,20 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    min-height: 44px;
-    padding: 0 18px;
-    background: rgba(10, 132, 255, 0.12);
+    min-height: 42px;
+    padding: 0 16px;
+    background: rgba(10, 132, 255, 0.1);
     color: #0a84ff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: -0.2px;
     border-radius: var(--radius-pill);
-    border: 1px solid rgba(10, 132, 255, 0.25);
+    border: 1px solid rgba(10, 132, 255, 0.22);
     transition: transform var(--spring-micro), background var(--spring-micro);
   }
 
   .button-secondary:hover {
-    background: rgba(10, 132, 255, 0.20);
+    background: rgba(10, 132, 255, 0.18);
     transform: translateY(-1px);
   }
 
@@ -158,11 +167,11 @@
   .button-glass {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    padding: 0 18px;
+    min-height: 42px;
+    padding: 0 16px;
     background: var(--surface-1);
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.2px;
     border-radius: var(--radius-pill);

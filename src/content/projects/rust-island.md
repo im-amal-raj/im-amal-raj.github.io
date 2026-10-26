@@ -1,19 +1,12 @@
 ---
 title: "rust-island"
-tagline: "A native Dynamic Island for Wayland compositors (Umbriel / Niri). Proves Linux desktop UI can have fluid spring physics and compact elegance without running a Chromium instance."
+tagline: "A compact, fluid Dynamic Island for Wayland compositors (Umbriel / Niri). Built with Slint and Rust."
 category: "Desktop Shell"
 featured: true
 order: 1
-heroImage: "/images/projects/rust-island-capsule.svg"
-badge: "Featured"
+heroImage: "/images/projects/rust-island.png"
+badge: "Daily Driver"
 github: "https://github.com/im-amal-raj"
-metrics:
-  - label: "RAM Footprint"
-    value: "18 MB"
-  - label: "Spring Physics"
-    value: "120 FPS"
-  - label: "Binary Engine"
-    value: "Rust + Slint"
 tech:
   - "Rust"
   - "Slint UI"
@@ -22,15 +15,14 @@ tech:
   - "PipeWire"
 ---
 
-## The Problem: Electron Wrapping as Desktop Policy
+## Why I Built It
 
-Modern Linux desktop utilities frequently pull 350MB+ of RAM and run entire headless Chromium instances just to draw a floating pill or status widget. Unused RAM isn't "free"—it drains laptop battery, causes garbage collection stutter, and introduces latency during window switches.
+I love using Wayland on Linux, but I was frustrated with existing desktop bars and overlays. Many of them run on web tech, pulling 300MB+ of RAM and dragging laptop battery just to show the clock, media controls, and status pills.
 
-**`rust-island`** proves that desktop Linux can deliver macOS-grade visual craft, continuous squircle geometry, and fluid spring physics while compiling down to a lean native binary that idles silently at 18MB RSS.
+I wanted something that feels fluid and tactile under the cursor—similar to the polish you get on macOS—without the overhead. So I started building **`rust-island`** in Rust and Slint.
 
-### Key Architectural Choices
+### What It Does
 
-- **Compiled Slint Core**: GPU-accelerated rendering through FemtoVG/Skia with zero WebKit or Chromium dependencies.
-- **Wayland Layer Shell**: Sits natively above compositors (Umbriel, Niri) with hardware alpha blending and live blur.
-- **Micro-Damped Springs**: UI transitions inherit physical exit velocity instead of running rigid fixed-duration CSS animations.
-- **Zero Background Polling**: D-Bus event hooks for audio, battery, Wi-Fi, and clipboard updates eliminate continuous CPU wakeups.
+- **Layer Shell Native**: Sits cleanly over your desktop on compositors like Umbriel and Niri without feeling like a foreign window.
+- **Micro-Damped Springs**: Uses physical spring equations for transitions so resizing and expansions feel alive rather than like rigid CSS keyframes.
+- **Lightweight by Nature**: Compiles directly to native code, running silently with minimal memory impact and instant D-Bus event hooks for audio, battery, and media.
