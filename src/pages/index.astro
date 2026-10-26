@@ -1,0 +1,214 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import MetricsStrip from '../components/MetricsStrip.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ContentCard from '../components/ContentCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const articles = (await getCollection('writing')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout>
+  <Hero />
+  <MetricsStrip />
+
+  <!-- Featured Projects -->
+  <section id="projects" class="section-block">
+    <div class="section-header">
+      <div class="header-text">
+        <h2 class="text-title-1 section-title">Systems & Architecture</h2>
+        <p class="text-body section-sub">
+          High-performance tools, native Wayland shells, and micro-benchmarked developer utilities.
+        </p>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map((project, idx) => (
+        <ProjectCard project={project} index={idx} />
+      ))}
+    </div>
+  </section>
+
+  <!-- YouTube & Devlog Content Hub -->
+  <section id="writing" class="section-block">
+    <div class="section-header">
+      <div class="header-text">
+        <h2 class="text-title-1 section-title">Devlogs & Systems Writing</h2>
+        <p class="text-body section-sub">
+          Deep dives into audio engineering on Linux, Wayland compositor internals, and memory profiling.
+        </p>
+      </div>
+
+      <a
+        href="https://www.youtube.com/@amalrajm"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="channel-cta-link"
+      >
+        <span>YouTube Channel</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <div class="content-grid">
+      {articles.map((article) => (
+        <ContentCard entry={article} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Systems Ethos Section -->
+  <section id="system" class="section-block ethos-block">
+    <div class="glass-panel ethos-card">
+      <div class="ethos-header">
+        <div class="pill-badge">
+          <span>Engineering Manifesto</span>
+        </div>
+        <h2 class="text-title-2 ethos-title">The Anti-Bloat Doctrine</h2>
+      </div>
+
+      <div class="ethos-grid">
+        <div class="ethos-item">
+          <span class="ethos-num">01</span>
+          <h3 class="ethos-item-title text-headline">Zero Electron Bloat</h3>
+          <p class="text-body ethos-desc">
+            Desktops deserve native compilation. Using Rust, Slint, and Wayland Layer Shell instead of 400MB web wrappers running background Chromium processes.
+          </p>
+        </div>
+
+        <div class="ethos-item">
+          <span class="ethos-num">02</span>
+          <h3 class="ethos-item-title text-headline">Apple HIG Fidelity</h3>
+          <p class="text-body ethos-desc">
+            Interfaces must behave like physical materials. Strict 8pt grid, continuous squircle curvature, and interruptible damped spring physics ($\zeta = 0.85$).
+          </p>
+        </div>
+
+        <div class="ethos-item">
+          <span class="ethos-num">03</span>
+          <h3 class="ethos-item-title text-headline">Constraint-First Testing</h3>
+          <p class="text-body ethos-desc">
+            Testing performance under realistic resource limits. If an audio pipeline, CLI tool, or desktop overlay cannot survive tight constraints, it is refactored.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-block {
+    padding: var(--space-10) 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    color: var(--text-primary);
+  }
+
+  .section-sub {
+    max-width: 600px;
+    margin-top: var(--space-1);
+  }
+
+  .channel-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-blue-subtle);
+    border: 1px solid rgba(10, 132, 255, 0.2);
+    transition: background var(--spring-micro), transform var(--spring-micro);
+  }
+
+  .channel-cta-link:hover {
+    background: rgba(10, 132, 255, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .ethos-card {
+    padding: var(--space-8);
+  }
+
+  .ethos-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .ethos-title {
+    color: var(--text-primary);
+  }
+
+  .ethos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .ethos-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .ethos-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    font-family: var(--font-mono);
+  }
+
+  .ethos-item-title {
+    color: var(--text-primary);
+  }
+
+  .ethos-desc {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (max-width: 768px) {
+    .ethos-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .ethos-card {
+      padding: var(--space-5);
+    }
+  }
+</style>

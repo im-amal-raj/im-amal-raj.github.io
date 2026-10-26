@@ -1,0 +1,21 @@
+{
+  "name": "im-amal-raj-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.18.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5",
+    "typescript": "^5.7.3"
+  }
+}

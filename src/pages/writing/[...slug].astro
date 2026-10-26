@@ -1,0 +1,310 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('writing');
+  return articles.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, description, pubDate, category, readTime, youtubeUrl, tags } = entry.data;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+}).format(pubDate);
+---
+
+<BaseLayout title={`${title} — Amal Raj`} description={description} articleDate={pubDate}>
+  <article class="article-container">
+    <div class="back-nav">
+      <a href="/#writing" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span>Back to Devlogs</span>
+      </a>
+    </div>
+
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="category-pill">{category}</span>
+        <span class="meta-dot">·</span>
+        <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        {readTime && (
+          <>
+            <span class="meta-dot">·</span>
+            <span>{readTime}</span>
+          </>
+        )}
+      </div>
+
+      <h1 class="article-title text-title-1">
+        {title}
+      </h1>
+
+      <p class="article-description text-body">
+        {description}
+      </p>
+
+      {youtubeUrl && (
+        <div class="article-video-banner glass-panel">
+          <div class="banner-info">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="yt-icon">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <div>
+              <span class="banner-title">Companion YouTube Video</span>
+              <p class="banner-sub">Watch the step-by-step devlog and live terminal demonstration.</p>
+            </div>
+          </div>
+
+          <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" class="banner-btn">
+            <span>Watch on YouTube</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+      )}
+    </header>
+
+    <div class="article-prose">
+      <Content />
+    </div>
+
+    {tags && tags.length > 0 && (
+      <footer class="article-footer">
+        <div class="tags-container">
+          {tags.map((tag) => (
+            <span class="tag-badge">#{tag}</span>
+          ))}
+        </div>
+      </footer>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .article-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-8) 0 var(--space-12);
+  }
+
+  .back-nav {
+    margin-bottom: var(--space-6);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    transition: color var(--spring-micro), background var(--spring-micro);
+  }
+
+  .back-link:hover {
+    color: var(--text-primary);
+    background: var(--surface-2);
+  }
+
+  .article-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-8);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .category-pill {
+    font-weight: 600;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  .meta-dot {
+    color: var(--text-tertiary);
+  }
+
+  .article-title {
+    color: var(--text-primary);
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.2;
+  }
+
+  .article-description {
+    font-size: 18px;
+    line-height: 26px;
+    color: var(--text-secondary);
+  }
+
+  .article-video-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-4);
+    border-radius: var(--radius-md);
+    flex-wrap: wrap;
+  }
+
+  .banner-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .yt-icon {
+    color: #ff453a;
+    flex-shrink: 0;
+  }
+
+  .banner-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .banner-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff6961;
+    background: rgba(255, 69, 58, 0.12);
+    border: 1px solid rgba(255, 69, 58, 0.25);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    transition: background var(--spring-micro);
+  }
+
+  .banner-btn:hover {
+    background: rgba(255, 69, 58, 0.22);
+  }
+
+  /* Prose Typography for Content */
+  .article-prose {
+    font-size: 17px;
+    line-height: 28px;
+    color: var(--text-primary);
+  }
+
+  .article-prose :global(h2) {
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+  }
+
+  .article-prose :global(h3) {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+    color: var(--text-primary);
+  }
+
+  .article-prose :global(p) {
+    margin-bottom: var(--space-5);
+    color: var(--text-secondary);
+  }
+
+  .article-prose :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .article-prose :global(ul), .article-prose :global(ol) {
+    margin-bottom: var(--space-5);
+    padding-left: var(--space-6);
+    color: var(--text-secondary);
+  }
+
+  .article-prose :global(li) {
+    margin-bottom: var(--space-2);
+  }
+
+  .article-prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    color: var(--accent-blue);
+  }
+
+  .article-prose :global(pre) {
+    background: rgba(18, 18, 20, 0.95);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    overflow-x: auto;
+    margin-bottom: var(--space-6);
+  }
+
+  .article-prose :global(pre code) {
+    background: transparent;
+    padding: 0;
+    color: var(--text-primary);
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .article-footer {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-badge {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-subtle);
+  }
+</style>

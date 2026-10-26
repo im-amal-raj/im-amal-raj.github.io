@@ -1,0 +1,155 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'writing'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, pubDate, category, readTime, youtubeUrl, tags } = entry.data;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+}).format(pubDate);
+---
+
+<article class="content-card glass-panel glass-panel-interactive">
+  <div class="content-header">
+    <div class="meta-row">
+      <span class="category-pill">{category}</span>
+      <span class="meta-separator">·</span>
+      <time datetime={pubDate.toISOString()} class="meta-date">{formattedDate}</time>
+      {readTime && (
+        <>
+          <span class="meta-separator">·</span>
+          <span class="meta-readtime">{readTime}</span>
+        </>
+      )}
+    </div>
+
+    {youtubeUrl && (
+      <a
+        href={youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="yt-pill"
+        aria-label="Watch video breakdown on YouTube"
+        title="Watch video on YouTube"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        <span>Video</span>
+      </a>
+    )}
+  </div>
+
+  <a href={`/writing/${entry.slug}`} class="content-body">
+    <h3 class="content-title text-title-3">
+      {title}
+    </h3>
+    <p class="content-desc text-body">
+      {description}
+    </p>
+  </a>
+
+  {tags && tags.length > 0 && (
+    <div class="tags-row">
+      {tags.map((tag) => (
+        <span class="tag-pill">#{tag}</span>
+      ))}
+    </div>
+  )}
+</article>
+
+<style>
+  .content-card {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .category-pill {
+    font-weight: 600;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+  }
+
+  .meta-separator {
+    color: var(--text-tertiary);
+  }
+
+  .meta-date, .meta-readtime {
+    color: var(--text-secondary);
+  }
+
+  .yt-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 69, 58, 0.12);
+    color: #ff6961;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 69, 58, 0.25);
+    transition: background var(--spring-micro);
+  }
+
+  .yt-pill:hover {
+    background: rgba(255, 69, 58, 0.22);
+  }
+
+  .content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .content-title {
+    color: var(--text-primary);
+    transition: color var(--spring-micro);
+  }
+
+  .content-card:hover .content-title {
+    color: var(--accent-blue);
+  }
+
+  .content-desc {
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--text-secondary);
+  }
+
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .tag-pill {
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+</style>

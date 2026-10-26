@@ -1,0 +1,126 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-left">
+      <div class="footer-brand">
+        <span class="status-indicator"></span>
+        <span class="brand-text">Amal Raj</span>
+      </div>
+      <p class="footer-tagline text-footnote">
+        The Anti-Bloat Engineer. Apple design principles on Linux & Wayland. Zero-cost abstractions.
+      </p>
+      <p class="copyright text-caption-1">
+        © {currentYear} Amal Raj. Hosted on GitHub Pages.
+      </p>
+    </div>
+
+    <div class="footer-nav">
+      <div class="footer-column">
+        <span class="column-title">Projects</span>
+        <a href="#projects" class="footer-link">rust-island</a>
+        <a href="#projects" class="footer-link">yt-hunter</a>
+        <a href="#projects" class="footer-link">Noctalia v5</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="column-title">Creator & Social</span>
+        <a href="https://www.youtube.com/@amalrajm" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube Devlogs</a>
+        <a href="https://github.com/im-amal-raj" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+        <a href="mailto:amalMraj@proton.me" class="footer-link">Contact Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border-subtle);
+    padding: var(--space-10) 0 var(--space-8);
+    background: rgba(12, 12, 14, 0.4);
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 360px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .status-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-green);
+  }
+
+  .footer-tagline {
+    color: var(--text-secondary);
+    line-height: 20px;
+  }
+
+  .copyright {
+    color: var(--text-tertiary);
+    margin-top: var(--space-2);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--space-10);
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .column-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-1);
+  }
+
+  .footer-link {
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: color var(--spring-micro);
+  }
+
+  .footer-link:hover {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .footer-content {
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .footer-nav {
+      gap: var(--space-6);
+    }
+  }
+</style>

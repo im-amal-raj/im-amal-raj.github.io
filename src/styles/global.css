@@ -1,0 +1,234 @@
+/* Apple HIG & Modern Web Standard Design Tokens */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces (Layered Charcoal System) */
+  --surface-0: #000000;
+  --surface-1: rgba(28, 28, 30, 0.75);
+  --surface-2: rgba(44, 44, 46, 0.85);
+  --surface-3: rgba(58, 58, 60, 0.90);
+  --surface-translucent: rgba(20, 20, 22, 0.70);
+
+  /* Glass Borders & Inner Highlights */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.16);
+  --glass-inner-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --glass-depth-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.65), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+
+  /* Apple Semantic Accents */
+  --accent-blue: #0a84ff;
+  --accent-blue-subtle: rgba(10, 132, 255, 0.12);
+  --accent-green: #30d158;
+  --accent-green-subtle: rgba(48, 209, 88, 0.12);
+  --accent-orange: #ff9f0a;
+  --accent-orange-subtle: rgba(255, 159, 10, 0.12);
+  --accent-red: #ff453a;
+
+  /* Typography Opacity Hierarchy */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(235, 235, 245, 0.60);
+  --text-tertiary: rgba(235, 235, 245, 0.35);
+
+  /* Radii (Apple HIG continuous curvature equivalents) */
+  --radius-pill: 9999px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* Fluid Motion Springs */
+  --spring-micro: 180ms cubic-bezier(0.2, 0, 0, 1);
+  --spring-standard: 300ms cubic-bezier(0.16, 1.0, 0.3, 1.0);
+  --spring-expressive: 350ms cubic-bezier(0.16, 1.0, 0.3, 1.028);
+
+  /* Font Families */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Cascadia Code", monospace;
+
+  /* 8pt Spatial Rhythm */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--surface-0);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  accent-color: var(--accent-blue);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-0);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Typography Hierarchy with Authentic Optical Tracking */
+.text-large-title {
+  font-size: 34px;
+  line-height: 41px;
+  font-weight: 700;
+  letter-spacing: 0.37px;
+}
+
+.text-title-1 {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 700;
+  letter-spacing: 0.36px;
+}
+
+.text-title-2 {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0.35px;
+}
+
+.text-title-3 {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 600;
+  letter-spacing: 0.38px;
+}
+
+.text-headline {
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.43px;
+}
+
+.text-body {
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.43px;
+  color: var(--text-secondary);
+}
+
+.text-callout {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  letter-spacing: -0.31px;
+}
+
+.text-subhead {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: -0.23px;
+}
+
+.text-footnote {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  letter-spacing: -0.08px;
+}
+
+.text-caption-1 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.00px;
+}
+
+.text-caption-2 {
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 500;
+  letter-spacing: 0.07px;
+}
+
+/* Glass Surface Styles */
+.glass-panel {
+  background: var(--surface-1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--glass-inner-shadow), var(--glass-depth-shadow);
+  border-radius: var(--radius-lg);
+  transition: transform var(--spring-standard), background var(--spring-standard), border-color var(--spring-standard), box-shadow var(--spring-standard);
+}
+
+.glass-panel-interactive:hover {
+  background: var(--surface-2);
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+}
+
+.glass-panel-interactive:active {
+  background: var(--surface-3);
+  transform: scale(0.99) translateY(0);
+}
+
+/* Pill Badge */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.05px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+}
+
+.pill-badge.active {
+  background: var(--accent-blue-subtle);
+  color: var(--accent-blue);
+  border-color: rgba(10, 132, 255, 0.25);
+}
+
+.pill-badge.live {
+  background: var(--accent-green-subtle);
+  color: var(--accent-green);
+  border-color: rgba(48, 209, 88, 0.25);
+}
+
+/* Base Link */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--spring-micro);
+}
+
+/* Container Constraint */
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
