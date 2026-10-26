@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Amal Raj — Systems Devlogs & Engineering</title>
+    <description>Fluid interface physics on Linux, continuous squircle geometry, and high-performance Rust tools.</description>
+    <link>https://im-amal-raj.github.io</link>
+    <atom:link href="https://im-amal-raj.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    
+    <item>
+      <title><![CDATA[Calibrating a Broadcast-Ready Vocal Pipeline on CachyOS]]></title>
+      <link>https://im-amal-raj.github.io/writing/audio-pipeline-calibration-cachyos</link>
+      <guid>https://im-amal-raj.github.io/writing/audio-pipeline-calibration-cachyos</guid>
+      <description><![CDATA[Fixing motherboard electrical leak, staging ALSA gains, and wiring PipeWire neural noise filters for crisp -14 LUFS audio.]]></description>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Building a Fluid Dynamic Island on Wayland with Rust & Slint]]></title>
+      <link>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</link>
+      <guid>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</guid>
+      <description><![CDATA[How we implemented interruptible spring physics, liquid glass borders, and sub-18MB memory footprint on Linux.]]></description>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
