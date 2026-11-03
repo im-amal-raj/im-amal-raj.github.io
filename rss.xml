@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Amal Raj — Systems Devlogs & Engineering</title>
-    <description>Fluid interface physics on Linux, continuous squircle geometry, and high-performance Rust tools.</description>
+    <title>Amal Raj — Notes & Case Studies</title>
+    <description>Notes on full-stack web applications, Linux desktop tools, and building software.</description>
     <link>https://im-amal-raj.github.io</link>
     <atom:link href="https://im-amal-raj.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
     
     <item>
-      <title><![CDATA[Calibrating a Broadcast-Ready Vocal Pipeline on CachyOS]]></title>
+      <title><![CDATA[Fixing Microphone Hiss and Gain Staging on Linux]]></title>
       <link>https://im-amal-raj.github.io/writing/audio-pipeline-calibration-cachyos</link>
       <guid>https://im-amal-raj.github.io/writing/audio-pipeline-calibration-cachyos</guid>
-      <description><![CDATA[Fixing motherboard electrical leak, staging ALSA gains, and wiring PipeWire neural noise filters for crisp -14 LUFS audio.]]></description>
+      <description><![CDATA[How auditing ALSA preamp levels and routing neural noise filters in PipeWire fixed an annoying motherboard electrical noise issue.]]></description>
       <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[Building a Fluid Dynamic Island on Wayland with Rust & Slint]]></title>
+      <title><![CDATA[Notes on Vibe-Coding a Dynamic Island for Wayland]]></title>
       <link>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</link>
       <guid>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</guid>
-      <description><![CDATA[How we implemented interruptible spring physics, liquid glass borders, and sub-18MB memory footprint on Linux.]]></description>
+      <description><![CDATA[How having a clear visual idea and collaborating with AI tools brought a fluid desktop widget to life on Linux.]]></description>
       <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Case Study: Building a Full-Stack Event App with Django]]></title>
+      <link>https://dev.to/im-amal-raj/case-study-building-a-full-stack-event-management-app-in-python-django-3h0f</link>
+      <guid>https://im-amal-raj.github.io/writing/case-study-django-event-management</guid>
+      <description><![CDATA[A breakdown of designing relational database models, user permissions, and clean form workflows in Python.]]></description>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>
