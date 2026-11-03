@@ -2,37 +2,46 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import ContentCard from '../components/ContentCard.astro';
+import ProjectShowcase from '../components/react/ProjectShowcase';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const rawProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const articles = (await getCollection('writing')).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
+
+const projectItems = rawProjects.map((p) => ({
+  title: p.data.title,
+  tagline: p.data.tagline,
+  category: p.data.category,
+  badge: p.data.badge,
+  tech: p.data.tech,
+  github: p.data.github,
+  demo: p.data.demo,
+  heroImage: p.data.heroImage,
+  slug: p.slug,
+}));
 ---
 
 <BaseLayout>
   <Hero />
 
-  <!-- Featured Projects Section -->
+  <!-- Featured Projects (Interactive React Bento Island) -->
   <section id="projects" class="py-12 sm:py-16">
     <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
       <div>
         <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">Featured Projects</h2>
         <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
-          Web applications, desktop experiments, and tools built to solve practical workflows.
+          Desktop tools, full-stack web applications, and server utilities built to solve practical workflows.
         </p>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.map((project, idx) => (
-        <ProjectCard project={project} index={idx} />
-      ))}
-    </div>
+    <!-- Client-visible interactive project showcase with spring filters and simulator -->
+    <ProjectShowcase client:visible projects={projectItems} />
   </section>
 
-  <!-- Writing & Case Studies Section -->
+  <!-- Notes & Case Studies Section -->
   <section id="writing" class="py-12 sm:py-16 border-t border-white/10">
     <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
       <div>
@@ -41,8 +50,8 @@ const articles = (await getCollection('writing')).sort(
           Deep-dives into backend architectures, Linux desktop setups, and vibe-coding experiments.
         </p>
       </div>
-      <div class="inline-flex items-center px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-300 border border-white/10">
-        <span>3 Articles</span>
+      <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-300 border border-white/10 font-mono">
+        <span>{articles.length} Posts</span>
       </div>
     </div>
 
@@ -53,7 +62,7 @@ const articles = (await getCollection('writing')).sort(
     </div>
   </section>
 
-  <!-- About & Background (Bento Grid) -->
+  <!-- About & Background (Bento Grid with 1px Specular Highlights) -->
   <section id="about" class="py-12 sm:py-16 border-t border-white/10">
     <div class="mb-8">
       <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">About & How I Work</h2>
@@ -64,9 +73,9 @@ const articles = (await getCollection('writing')).sort(
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
       <!-- Card 1: Vibe Coding & Tooling -->
-      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] flex flex-col gap-3">
-        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_12px_32px_-8px_rgba(0,0,0,0.65)] flex flex-col gap-3.5 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+        <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="16 18 22 12 16 6"></polyline>
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
@@ -78,9 +87,9 @@ const articles = (await getCollection('writing')).sort(
       </div>
 
       <!-- Card 2: Web & Backend -->
-      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] flex flex-col gap-3">
-        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_12px_32px_-8px_rgba(0,0,0,0.65)] flex flex-col gap-3.5 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+        <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
             <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
             <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
@@ -93,9 +102,9 @@ const articles = (await getCollection('writing')).sort(
       </div>
 
       <!-- Card 3: Linux & Craft -->
-      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] flex flex-col gap-3">
-        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_12px_32px_-8px_rgba(0,0,0,0.65)] flex flex-col gap-3.5 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+        <div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect width="18" height="18" x="3" y="3" rx="2"></rect>
             <path d="M3 9h18"></path>
             <path d="M9 21V9"></path>
@@ -111,17 +120,17 @@ const articles = (await getCollection('writing')).sort(
     <!-- Tech Stack Pill Row -->
     <div class="mt-8 p-6 rounded-[20px] bg-neutral-900/40 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div class="flex flex-col gap-1">
-        <span class="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Technologies & Frameworks</span>
-        <span class="text-sm text-neutral-300">Languages and tools I use across projects</span>
+        <span class="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Technologies & Tools</span>
+        <span class="text-sm text-neutral-300">Languages and frameworks I use across projects</span>
       </div>
       <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Python</span>
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Django</span>
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">JavaScript</span>
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">SQLite / Postgres</span>
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Astro & Tailwind</span>
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Wayland / Linux</span>
-        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Git</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">Python</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">Django</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">JavaScript / React</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">PostgreSQL / SQLite</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">Astro & Tailwind v4</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">Wayland / Linux</span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-200 border border-white/10 font-mono">Git</span>
       </div>
     </div>
   </section>

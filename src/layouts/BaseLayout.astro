@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import LenisScroller from '../components/react/LenisScroller';
 import '../styles/global.css';
 
 interface Props {
@@ -11,8 +12,8 @@ interface Props {
 }
 
 const {
-  title = "Amal Raj — Developer & Tinkerer",
-  description = "Personal portfolio of Amal Raj. Full-stack Python & Django developer, Linux enthusiast, and vibe-coder based in Kerala, India.",
+  title = "Amal Raj — Developer, Tinkerer & Vibe Coder",
+  description = "Personal portfolio of Amal Raj. Building full-stack web applications with Python & Django, exploring Wayland on Linux, and vibe-coding tools.",
   image = "/og-image.png",
   articleDate,
 } = Astro.props;
@@ -62,7 +63,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://im-amal-
       <meta property="article:published_time" content={articleDate.toISOString()} />
     )}
   </head>
-  <body class="bg-black text-neutral-100 min-h-screen flex flex-col font-sans antialiased selection:bg-sky-500/30 selection:text-sky-200">
+  <body class="bg-black text-neutral-100 min-h-screen flex flex-col font-sans antialiased selection:bg-sky-500/30 selection:text-sky-200 relative overflow-x-hidden">
+    <!-- Atmospheric Ambient Lighting Layer -->
+    <div class="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(14,165,233,0.12),transparent_70%)]"></div>
+    <div class="fixed inset-0 pointer-events-none -z-10 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+    <!-- Momentum Smooth Scroller -->
+    <LenisScroller client:load />
+
     <Header />
     <main id="main-content" class="container mx-auto max-w-4xl px-4 sm:px-6 flex-1 flex flex-col">
       <slot />
