@@ -6,130 +6,62 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, category, readTime, tags } = entry.data;
+const { title, description, pubDate, category, readTime, externalUrl, tags } = entry.data;
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
 }).format(pubDate);
+
+const targetHref = externalUrl || `/writing/${entry.slug}`;
+const isExternal = Boolean(externalUrl);
 ---
 
-<article class="content-card glass-panel glass-panel-interactive">
-  <div class="content-header">
-    <div class="meta-row">
-      <span class="category-pill">{category}</span>
-      <span class="meta-separator">·</span>
-      <time datetime={pubDate.toISOString()} class="meta-date">{formattedDate}</time>
+<article class="group flex flex-col p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] hover:border-white/20 hover:bg-neutral-900/80 transition-all duration-300 hover:-translate-y-1">
+  <div class="flex items-center justify-between gap-3 text-xs text-neutral-400 mb-3">
+    <div class="flex items-center gap-2">
+      <span class="font-semibold uppercase tracking-wider text-sky-400 text-[11px]">{category}</span>
+      <span>·</span>
+      <time datetime={pubDate.toISOString()} class="text-neutral-400">{formattedDate}</time>
       {readTime && (
         <>
-          <span class="meta-separator">·</span>
-          <span class="meta-readtime">{readTime}</span>
+          <span>·</span>
+          <span>{readTime}</span>
         </>
       )}
     </div>
 
-    <span class="type-pill">Devlog</span>
+    {isExternal && (
+      <span class="inline-flex items-center gap-1 text-[11px] font-medium text-neutral-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
+        <span>Dev.to</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </span>
+    )}
   </div>
 
-  <a href={`/writing/${entry.slug}`} class="content-body">
-    <h3 class="content-title text-title-3">
+  <a
+    href={targetHref}
+    target={isExternal ? "_blank" : undefined}
+    rel={isExternal ? "noopener noreferrer" : undefined}
+    class="flex flex-col gap-2 flex-1"
+  >
+    <h3 class="text-white text-base sm:text-lg font-semibold tracking-tight group-hover:text-sky-400 transition-colors duration-150 leading-snug">
       {title}
     </h3>
-    <p class="content-desc text-body">
+    <p class="text-neutral-300 text-sm leading-relaxed">
       {description}
     </p>
   </a>
 
   {tags && tags.length > 0 && (
-    <div class="tags-row">
+    <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-white/5">
       {tags.map((tag) => (
-        <span class="tag-pill">#{tag}</span>
+        <span class="text-[11px] text-neutral-400 font-mono">#{tag}</span>
       ))}
     </div>
   )}
 </article>
-
-<style>
-  .content-card {
-    padding: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .content-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-  }
-
-  .meta-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-  }
-
-  .category-pill {
-    font-weight: 600;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 11px;
-  }
-
-  .meta-separator {
-    color: var(--text-tertiary);
-  }
-
-  .meta-date, .meta-readtime {
-    color: var(--text-secondary);
-  }
-
-  .type-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 8px;
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-tertiary);
-    font-size: 11px;
-    font-weight: 500;
-    border: 1px solid var(--border-subtle);
-  }
-
-  .content-body {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .content-title {
-    color: var(--text-primary);
-    transition: color var(--spring-micro);
-  }
-
-  .content-card:hover .content-title {
-    color: var(--accent-blue);
-  }
-
-  .content-desc {
-    font-size: 15px;
-    line-height: 22px;
-    color: var(--text-secondary);
-  }
-
-  .tags-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: auto;
-  }
-
-  .tag-pill {
-    font-size: 11px;
-    color: var(--text-tertiary);
-  }
-</style>

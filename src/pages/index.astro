@@ -14,189 +14,115 @@ const articles = (await getCollection('writing')).sort(
 <BaseLayout>
   <Hero />
 
-  <!-- Featured Projects -->
-  <section id="projects" class="section-block">
-    <div class="section-header">
-      <div class="header-text">
-        <h2 class="text-title-1 section-title">Projects I'm Building</h2>
-        <p class="text-body section-sub">
-          Native Wayland utilities, terminal tools, and audio experiments built to solve my own daily workflow friction.
+  <!-- Featured Projects Section -->
+  <section id="projects" class="py-12 sm:py-16">
+    <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
+      <div>
+        <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">Featured Projects</h2>
+        <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
+          Web applications, desktop experiments, and tools built to solve practical workflows.
         </p>
       </div>
     </div>
 
-    <div class="projects-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project, idx) => (
         <ProjectCard project={project} index={idx} />
       ))}
     </div>
   </section>
 
-  <!-- Systems Writing & Devlogs -->
-  <section id="writing" class="section-block">
-    <div class="section-header">
-      <div class="header-text">
-        <h2 class="text-title-1 section-title">Devlogs & Systems Notes</h2>
-        <p class="text-body section-sub">
-          Notes and benchmarks from building desktop shells, calibrating Linux audio, and profiling memory usage.
+  <!-- Writing & Case Studies Section -->
+  <section id="writing" class="py-12 sm:py-16 border-t border-white/10">
+    <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
+      <div>
+        <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">Notes & Case Studies</h2>
+        <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
+          Deep-dives into backend architectures, Linux desktop setups, and vibe-coding experiments.
         </p>
       </div>
-
-      <div class="pill-badge">
-        <span>Articles & Receipts</span>
+      <div class="inline-flex items-center px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-300 border border-white/10">
+        <span>3 Articles</span>
       </div>
     </div>
 
-    <div class="content-grid">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
       {articles.map((article) => (
         <ContentCard entry={article} />
       ))}
     </div>
   </section>
 
-  <!-- About & Philosophy Section -->
-  <section id="about" class="section-block ethos-block">
-    <div class="glass-panel ethos-card">
-      <div class="ethos-header">
-        <div class="pill-badge">
-          <span>How I Work</span>
+  <!-- About & Background (Bento Grid) -->
+  <section id="about" class="py-12 sm:py-16 border-t border-white/10">
+    <div class="mb-8">
+      <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">About & How I Work</h2>
+      <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
+        A bit about my background, learning approach, and what I enjoy building.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- Card 1: Vibe Coding & Tooling -->
+      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] flex flex-col gap-3">
+        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
         </div>
-        <h2 class="text-title-2 ethos-title">Building for Speed, Feel, and Freedom</h2>
-        <p class="text-body ethos-intro">
-          I'm not writing corporate whitepapers; I vibe code tools that solve my own daily friction on Linux. Here are the simple principles that guide what I build:
+        <h3 class="text-white text-base font-semibold tracking-tight">Vibe-Coding with AI</h3>
+        <p class="text-neutral-300 text-sm leading-relaxed">
+          I don't claim to know every language under the sun. Instead, I focus on having a clear architectural vision, strong UX taste, and using AI coding assistants to bring complex ideas like Wayland desktop widgets and automation tools to life quickly.
         </p>
       </div>
 
-      <div class="ethos-grid">
-        <div class="ethos-item">
-          <span class="ethos-num">01</span>
-          <h3 class="ethos-item-title text-headline">Respecting the Hardware</h3>
-          <p class="text-body ethos-desc">
-            I started tinkering on older machines where every megabyte mattered. Today it feels common for simple apps to consume hundreds of megabytes of RAM. I prefer lean, native binaries that sip battery and run silently.
-          </p>
+      <!-- Card 2: Web & Backend -->
+      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] flex flex-col gap-3">
+        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+          </svg>
         </div>
+        <h3 class="text-white text-base font-semibold tracking-tight">Full-Stack Python</h3>
+        <p class="text-neutral-300 text-sm leading-relaxed">
+          My primary development foundation is Python and Django. I enjoy building end-to-end applications from the ground up—designing database schemas, implementing authentication flows, and building clean, responsive interfaces.
+        </p>
+      </div>
 
-        <div class="ethos-item">
-          <span class="ethos-num">02</span>
-          <h3 class="ethos-item-title text-headline">Design as a Feature</h3>
-          <p class="text-body ethos-desc">
-            I love Linux for user ownership, but desktop Linux has often treated visual polish as an afterthought. You shouldn't have to choose between software freedom and fluid interface feedback, good typography, and clean aesthetics.
-          </p>
+      <!-- Card 3: Linux & Craft -->
+      <div class="p-6 rounded-[20px] bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_12px_32px_-8px_rgba(0,0,0,0.6)] flex flex-col gap-3">
+        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M9 21V9"></path>
+          </svg>
         </div>
+        <h3 class="text-white text-base font-semibold tracking-tight">Linux & Clean Desktops</h3>
+        <p class="text-neutral-300 text-sm leading-relaxed">
+          I daily-drive Linux with Wayland compositors. I care deeply about how software feels in daily use: minimal memory consumption, zero unnecessary background bloat, and smooth physical spring animations rather than rigid jumpy transitions.
+        </p>
+      </div>
+    </div>
 
-        <div class="ethos-item">
-          <span class="ethos-num">03</span>
-          <h3 class="ethos-item-title text-headline">Real Receipts Over Theories</h3>
-          <p class="text-body ethos-desc">
-            Every optimization claim should be proven with real terminal logs, frame-time checks, and simple reproducible setups—not marketing buzzwords.
-          </p>
-        </div>
+    <!-- Tech Stack Pill Row -->
+    <div class="mt-8 p-6 rounded-[20px] bg-neutral-900/40 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex flex-col gap-1">
+        <span class="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Technologies & Frameworks</span>
+        <span class="text-sm text-neutral-300">Languages and tools I use across projects</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Python</span>
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Django</span>
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">JavaScript</span>
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">SQLite / Postgres</span>
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Astro & Tailwind</span>
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Wayland / Linux</span>
+        <span class="px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-200 border border-white/10">Git</span>
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .section-block {
-    padding: var(--space-8) 0;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
-    flex-wrap: wrap;
-  }
-
-  .section-title {
-    color: var(--text-primary);
-    font-size: 26px;
-    letter-spacing: -0.3px;
-  }
-
-  .section-sub {
-    max-width: 600px;
-    margin-top: var(--space-1);
-    font-size: 15px;
-    line-height: 23px;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-5);
-  }
-
-  .content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-4);
-  }
-
-  .ethos-card {
-    padding: var(--space-8);
-  }
-
-  .ethos-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-    margin-bottom: var(--space-6);
-  }
-
-  .ethos-title {
-    color: var(--text-primary);
-    font-size: 22px;
-  }
-
-  .ethos-intro {
-    max-width: 720px;
-    margin-top: var(--space-1);
-    font-size: 15px;
-    line-height: 24px;
-    color: var(--text-secondary);
-  }
-
-  .ethos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-  }
-
-  .ethos-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .ethos-num {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent-blue);
-    font-family: var(--font-mono);
-  }
-
-  .ethos-item-title {
-    color: var(--text-primary);
-    font-size: 16px;
-  }
-
-  .ethos-desc {
-    font-size: 14px;
-    line-height: 22px;
-    color: var(--text-secondary);
-  }
-
-  @media (max-width: 768px) {
-    .ethos-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-5);
-    }
-    .ethos-card {
-      padding: var(--space-5);
-    }
-  }
-</style>

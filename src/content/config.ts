@@ -12,10 +12,6 @@ const projects = defineCollection({
     badge: z.string().optional(),
     github: z.string().optional(),
     demo: z.string().optional(),
-    metrics: z.array(z.object({
-      label: z.string(),
-      value: z.string(),
-    })).optional(),
     tech: z.array(z.string()).default([]),
   }),
 });
@@ -28,10 +24,9 @@ const writing = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     featured: z.boolean().default(false),
-    category: z.string().default('Devlog'),
+    category: z.string().default('Article'),
     readTime: z.string().optional(),
-    youtubeUrl: z.string().optional(),
-    youtubeId: z.string().optional(),
+    externalUrl: z.string().optional(),
     tags: z.array(z.string()).default([]),
   }),
 });

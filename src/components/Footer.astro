@@ -2,130 +2,36 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <div class="footer-left">
-      <div class="footer-brand">
-        <span class="status-indicator"></span>
-        <span class="brand-text">Amal Raj</span>
+<footer class="mt-auto border-t border-white/10 bg-neutral-950/70 py-12">
+  <div class="container mx-auto max-w-4xl px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-start gap-8">
+    <div class="flex flex-col gap-2 max-w-sm">
+      <div class="flex items-center gap-2 text-sm font-semibold text-white tracking-tight">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Amal Raj</span>
       </div>
-      <p class="footer-tagline text-footnote">
-        Systems, Rust, and fluid desktop tools on Linux.
+      <p class="text-xs text-neutral-400 leading-relaxed">
+        Developer based in Kerala, India. Building web applications and experimenting with Linux desktop tools.
       </p>
-      <p class="copyright text-caption-1">
-        © {currentYear} Amal Raj. Built with Astro. Hosted on GitHub Pages.
+      <p class="text-[11px] text-neutral-500 mt-2">
+        © {currentYear} Amal Raj. Hosted on GitHub Pages.
       </p>
     </div>
 
-    <div class="footer-nav">
-      <div class="footer-column">
-        <span class="column-title">Projects</span>
-        <a href="#projects" class="footer-link">rust-island</a>
-        <a href="#projects" class="footer-link">yt-hunter</a>
-        <a href="#projects" class="footer-link">PipeWire DSP Stack</a>
+    <div class="flex gap-10 sm:gap-16">
+      <div class="flex flex-col gap-2 text-xs">
+        <span class="font-semibold uppercase tracking-wider text-neutral-400 mb-1">Projects</span>
+        <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">Dynamic Island</a>
+        <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">RestroBill</a>
+        <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">Event Organizer</a>
       </div>
 
-      <div class="footer-column">
-        <span class="column-title">Connect & Links</span>
-        <a href="https://github.com/im-amal-raj" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
-        <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
-        <a href="mailto:amalMraj@proton.me" class="footer-link">Contact Email</a>
-        <span class="footer-link muted">YouTube (Coming Soon)</span>
+      <div class="flex flex-col gap-2 text-xs">
+        <span class="font-semibold uppercase tracking-wider text-neutral-400 mb-1">Connect</span>
+        <a href="https://github.com/im-amal-raj" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">GitHub</a>
+        <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">LinkedIn</a>
+        <a href="https://dev.to/im-amal-raj" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">Dev.to</a>
+        <a href="mailto:amalMraj@proton.me" class="text-neutral-400 hover:text-sky-400 transition-colors duration-150">Email</a>
       </div>
     </div>
   </div>
 </footer>
-
-<style>
-  .site-footer {
-    margin-top: auto;
-    border-top: 1px solid var(--border-subtle);
-    padding: var(--space-10) 0 var(--space-8);
-    background: rgba(12, 12, 14, 0.4);
-  }
-
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-8);
-    flex-wrap: wrap;
-  }
-
-  .footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    max-width: 360px;
-  }
-
-  .footer-brand {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .status-indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--accent-green);
-  }
-
-  .footer-tagline {
-    color: var(--text-secondary);
-    line-height: 20px;
-  }
-
-  .copyright {
-    color: var(--text-tertiary);
-    margin-top: var(--space-2);
-  }
-
-  .footer-nav {
-    display: flex;
-    gap: var(--space-10);
-  }
-
-  .footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .column-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-tertiary);
-    margin-bottom: var(--space-1);
-  }
-
-  .footer-link {
-    font-size: 13px;
-    color: var(--text-secondary);
-    transition: color var(--spring-micro);
-  }
-
-  .footer-link:hover {
-    color: var(--text-primary);
-  }
-
-  .footer-link.muted {
-    color: var(--text-tertiary);
-    font-style: italic;
-  }
-
-  @media (max-width: 640px) {
-    .footer-content {
-      flex-direction: column;
-      gap: var(--space-6);
-    }
-    .footer-nav {
-      gap: var(--space-6);
-    }
-  }
-</style>

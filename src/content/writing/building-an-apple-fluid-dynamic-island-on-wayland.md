@@ -1,42 +1,25 @@
 ---
-title: "Building a Fluid Dynamic Island on Wayland with Rust & Slint"
-description: "How we implemented interruptible spring physics, liquid glass borders, and sub-18MB memory footprint on Linux."
+title: "Notes on Vibe-Coding a Dynamic Island for Wayland"
+description: "How having a clear visual idea and collaborating with AI tools brought a fluid desktop widget to life on Linux."
 pubDate: 2026-10-24
-category: "Devlog"
+category: "Desktop UI"
 featured: true
-readTime: "5 min read"
+readTime: "4 min read"
 tags:
-  - "Rust"
-  - "Wayland"
   - "Slint"
-  - "Fluid Physics"
-  - "Systems"
+  - "Wayland"
+  - "AI Coding"
+  - "Linux"
 ---
 
-Why do desktop widgets on Linux so frequently feel ungrounded, or eat hundreds of megabytes of RAM just to render a rounded rectangle?
+I've always loved fluid, polished interface details, but desktop Linux status widgets usually feel like rigid rectangles.
 
-When I set out to build **`rust-island`**, the challenge was clear: produce a desktop interface that matches the optical fidelity, continuous curvature, and physical feedback of modern fluid mobile interfaces, but engineered with the discipline of a systems programmer.
+I wanted a compact pill resting at the top of the screen that could smoothly expand when playing music, adjusting volume, or switching workspaces. Since I'm not a native systems developer writing low-level Rust from scratch, I took a vibe-coding approach: holding a very clear visual and interaction mental model, and using AI coding assistants to write and debug the underlying Slint UI and Rust code.
 
-## 1. The Physics: Live Springs vs Rigid Keyframes
+## The Iteration Loop
 
-Traditional UI animation uses static easing curves (`ease-in-out` in 300ms). But if the user clicks or hovers while an animation is in flight, static curves either snap to the start or freeze the gesture.
+1. **Clear Interaction Rules**: Before asking the AI for code, I defined exact states: Compact resting pill, Media preview, Expanded controls, and Launcher mode.
+2. **Spring Physics over Static Durations**: Rather than rigid linear easing that snaps when interrupted, we wired continuous spring transitions so expanding and collapsing feels natural and weighted.
+3. **Layer Shell Protocol**: By targeting Wayland's layer-shell protocol directly, the island floats above windows smoothly without creating disruptive window-manager focus grabs.
 
-Following WWDC Fluid Interface principles, `rust-island` uses continuous spring equations:
-
-$$F = -k \Delta x - c v$$
-
-Every transition passes real-time velocity to the next state:
-- **Standard Navigation**: $T_0 = 0.35\text{s}, \zeta = 0.85$ (Slight cushion, smooth settling).
-- **Expressive Expand**: $T_0 = 0.40\text{s}, \zeta = 0.75$ (Under-damped, 2.8% overshoot).
-
-## 2. Layered Charcoal & Liquid Glass Material
-
-High-fidelity dark mode surfaces are never flat `#000000`. They are layered translucent charcoal:
-- **Canvas**: `#000000` (Pure pitch black)
-- **Resting Island**: `rgba(28, 28, 30, 0.75)` with `backdrop-filter: blur(20px)`
-- **Edge Highlight**: A 1px interior highlight `border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);`
-- **Continuous Curvature**: G2 squircle continuity that eliminates corner tangent kinks.
-
-## 3. Results Under Constraint
-
-Running on CachyOS under the Umbriel compositor, the compiled binary idles at **14–18 MB RSS**, responds at native 120Hz display refresh rate, and provides immediate tactile feedback.
+It's been a fun experiment in bringing an idea into reality simply by knowing what you want it to feel like and steering modern developer tools to build it.

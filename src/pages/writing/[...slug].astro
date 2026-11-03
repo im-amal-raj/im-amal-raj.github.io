@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const { title, description, pubDate, category, readTime, tags } = entry.data;
+const { title, description, pubDate, category, readTime, tags, externalUrl } = entry.data;
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
   month: 'long',
@@ -22,215 +22,76 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 ---
 
 <BaseLayout title={`${title} — Amal Raj`} description={description} articleDate={pubDate}>
-  <article class="article-container">
-    <div class="back-nav">
-      <a href="/#writing" class="back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <article class="max-w-2xl mx-auto py-10 sm:py-14">
+    <!-- Back Navigation -->
+    <div class="mb-8">
+      <a
+        href="/#writing"
+        class="inline-flex items-center gap-2 text-xs font-medium text-neutral-400 hover:text-white px-3 py-1.5 rounded-pill bg-white/5 border border-white/10 transition-all duration-150 hover:bg-white/10"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        <span>Back to Devlogs</span>
+        <span>Back to Notes</span>
       </a>
     </div>
 
-    <header class="article-header">
-      <div class="article-meta">
-        <span class="category-pill">{category}</span>
-        <span class="meta-dot">·</span>
+    <!-- Header -->
+    <header class="flex flex-col gap-3 pb-8 border-b border-white/10 mb-8">
+      <div class="flex items-center gap-2 text-xs text-neutral-400">
+        <span class="font-semibold uppercase tracking-wider text-sky-400 text-[11px]">{category}</span>
+        <span>·</span>
         <time datetime={pubDate.toISOString()}>{formattedDate}</time>
         {readTime && (
           <>
-            <span class="meta-dot">·</span>
+            <span>·</span>
             <span>{readTime}</span>
           </>
         )}
       </div>
 
-      <h1 class="article-title text-title-1">
+      <h1 class="text-white text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
         {title}
       </h1>
 
-      <p class="article-description text-body">
+      <p class="text-neutral-300 text-base sm:text-lg leading-relaxed mt-1">
         {description}
       </p>
+
+      {externalUrl && (
+        <div class="mt-2">
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-xs font-medium text-sky-400 hover:text-sky-300 underline underline-offset-4"
+          >
+            <span>Read original post on Dev.to</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+      )}
     </header>
 
-    <div class="article-prose">
+    <!-- Markdown Content Prose -->
+    <div class="prose prose-invert prose-neutral max-w-none prose-headings:text-white prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-3 prose-p:text-neutral-300 prose-p:leading-relaxed prose-li:text-neutral-300 prose-code:text-sky-300 prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-neutral-950 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl">
       <Content />
     </div>
 
+    <!-- Tags Footer -->
     {tags && tags.length > 0 && (
-      <footer class="article-footer">
-        <div class="tags-container">
+      <footer class="mt-12 pt-6 border-t border-white/10">
+        <div class="flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <span class="tag-badge">#{tag}</span>
+            <span class="text-xs text-neutral-400 bg-white/5 px-2.5 py-1 rounded-pill border border-white/10 font-mono">
+              #{tag}
+            </span>
           ))}
         </div>
       </footer>
     )}
   </article>
 </BaseLayout>
-
-<style>
-  .article-container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: var(--space-8) 0 var(--space-12);
-  }
-
-  .back-nav {
-    margin-bottom: var(--space-6);
-  }
-
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    padding: 6px 12px;
-    border-radius: var(--radius-pill);
-    background: var(--surface-1);
-    border: 1px solid var(--border-subtle);
-    transition: color var(--spring-micro), background var(--spring-micro);
-  }
-
-  .back-link:hover {
-    color: var(--text-primary);
-    background: var(--surface-2);
-  }
-
-  .article-header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding-bottom: var(--space-8);
-    border-bottom: 1px solid var(--border-subtle);
-    margin-bottom: var(--space-8);
-  }
-
-  .article-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  .category-pill {
-    font-weight: 600;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-  }
-
-  .meta-dot {
-    color: var(--text-tertiary);
-  }
-
-  .article-title {
-    color: var(--text-primary);
-    font-size: clamp(28px, 4vw, 36px);
-    line-height: 1.2;
-  }
-
-  .article-description {
-    font-size: 18px;
-    line-height: 26px;
-    color: var(--text-secondary);
-  }
-
-  /* Prose Typography for Content */
-  .article-prose {
-    font-size: 17px;
-    line-height: 28px;
-    color: var(--text-primary);
-  }
-
-  .article-prose :global(h2) {
-    font-size: 22px;
-    line-height: 30px;
-    font-weight: 600;
-    letter-spacing: 0.35px;
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-3);
-    color: var(--text-primary);
-  }
-
-  .article-prose :global(h3) {
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 600;
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-2);
-    color: var(--text-primary);
-  }
-
-  .article-prose :global(p) {
-    margin-bottom: var(--space-5);
-    color: var(--text-secondary);
-  }
-
-  .article-prose :global(strong) {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-
-  .article-prose :global(ul), .article-prose :global(ol) {
-    margin-bottom: var(--space-5);
-    padding-left: var(--space-6);
-    color: var(--text-secondary);
-  }
-
-  .article-prose :global(li) {
-    margin-bottom: var(--space-2);
-  }
-
-  .article-prose :global(code) {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    padding: 2px 6px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-sm);
-    color: var(--accent-blue);
-  }
-
-  .article-prose :global(pre) {
-    background: rgba(18, 18, 20, 0.95);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-4);
-    overflow-x: auto;
-    margin-bottom: var(--space-6);
-  }
-
-  .article-prose :global(pre code) {
-    background: transparent;
-    padding: 0;
-    color: var(--text-primary);
-    font-size: 13px;
-    line-height: 20px;
-  }
-
-  .article-footer {
-    margin-top: var(--space-10);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag-badge {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    background: rgba(255, 255, 255, 0.04);
-    padding: 3px 10px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border-subtle);
-  }
-</style>

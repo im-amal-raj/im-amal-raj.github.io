@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Fluid Interface & Modern Web Standard Design Tokens */
 :root {
   color-scheme: dark;

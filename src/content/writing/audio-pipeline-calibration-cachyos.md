@@ -1,39 +1,33 @@
 ---
-title: "Calibrating a Broadcast-Ready Vocal Pipeline on CachyOS"
-description: "Fixing motherboard electrical leak, staging ALSA gains, and wiring PipeWire neural noise filters for crisp -14 LUFS audio."
+title: "Fixing Microphone Hiss and Gain Staging on Linux"
+description: "How auditing ALSA preamp levels and routing neural noise filters in PipeWire fixed an annoying motherboard electrical noise issue."
 pubDate: 2026-10-25
-category: "Engineering"
+category: "Linux & Audio"
 featured: true
-readTime: "6 min read"
+readTime: "4 min read"
 tags:
   - "Audio"
   - "PipeWire"
   - "Linux"
-  - "Optimization"
+  - "Setup"
 ---
 
-Great devlogs and technical demos live and die by vocal clarity. You can write the cleanest Rust systems code in the world, but if your microphone sounds thin, quiet, or plagued by motherboard coil whine, audio immersion drops immediately.
+When recording voice calls or demos on my Linux laptop using an inexpensive headset and webcam microphone, the capture audio had a constant background buzzing hiss that made it sound like an electrical leak.
 
-Here is how I audited and rebuilt the audio recording pipeline on Linux to deliver consistent, broadcast-ready speech at **-14 LUFS**.
+Rather than assuming the microphone hardware was broken, I audited the sound pipeline using `amixer` and PipeWire.
 
-## The Problem: The "Electrical Leak" Sound
+## The Culprit: Too Much Analog Boost
 
-During audio audits on CachyOS with an ALC257 motherboard codec, the capture chain suffered from a harsh buzzing hiss. 
+Checking the ALSA mixer settings for the onboard ALC257 codec revealed the problem:
+- **Capture** was pushed to `100%` (+30.00 dB).
+- **Internal Mic Boost** was turned on at `+20.00 dB`.
 
-Inspecting `amixer` revealed the culprit:
-- Analog **Capture** was set to `100%` (+30.00 dB).
-- Analog **Internal Mic Boost** was set to `+20.00 dB`.
+Stacking +50 dB of hardware analog boost inside a laptop chassis amplifies motherboard electromagnetic coil whine and power ripple directly into the audio stream.
 
-Boosting raw analog signals by **+50 dB** inside a compact laptop chassis turns internal electromagnetic interference (EMI) and power plane ripple into audible noise.
+## The Fix: Gain Staging and Neural Filtering
 
-## The Solution: Clean Gain Staging & Neural Filtering
+1. **Drop Analog Gain**: Backed off the hardware capture slider to ~55% (+6 dB), allowing the audio preamp to operate in its cleanest linear range.
+2. **DeepFilterNet in PipeWire**: Loaded a native PipeWire filter-chain node running DeepFilterNet to remove ambient laptop fan noise without introducing underwater metallic artifacts.
+3. **High-Pass Filter**: Added a gentle 80Hz low-cut to strip low-frequency mechanical rumble from the desk.
 
-1. **Lower Analog Gain**: Reduce hardware capture to 50–60% (+6 dB), where the analog preamp stays in its linear, low-noise range.
-2. **DeepFilterNet / RNNoise in PipeWire**: Use AI-driven neural models to eliminate ambient laptop fan hum without metallic phasing.
-3. **Parametric Vocal EQ**:
-   - Low-cut high-pass filter at 80Hz (eliminates mechanical desk thumps).
-   - Gentle +2.5 dB presence lift at 3.2 kHz for speech intelligibility.
-4. **Transparent Compression & Limiting**:
-   - Target loudness standard: **-14 LUFS integrated**, with True Peak capped at **-1.5 dBTP**.
-
-The result is radio-grade vocal presence with zero analog noise—calibrated specifically for technical devlogs.
+The microphone output immediately became clear and clean with zero extra software running in userland.

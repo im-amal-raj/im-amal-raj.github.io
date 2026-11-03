@@ -1,192 +1,65 @@
 ---
 ---
 
-<section class="hero-section">
-  <div class="hero-badge-row">
-    <div class="pill-badge live">
-      <span class="pulse-dot"></span>
+<section class="pt-16 pb-12 sm:pt-20 sm:pb-16 flex flex-col items-start gap-6">
+  <!-- Status badges -->
+  <div class="flex items-center gap-2.5 flex-wrap">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
       <span>Kerala, India</span>
     </div>
-    <div class="pill-badge">
-      <span>Linux · Rust · Wayland</span>
+    <div class="inline-flex items-center px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-300 border border-white/10">
+      <span>Python & Django</span>
     </div>
-    <div class="pill-badge">
-      <span>Building in the open</span>
+    <div class="inline-flex items-center px-3 py-1 rounded-pill text-xs font-medium bg-white/5 text-neutral-300 border border-white/10">
+      <span>Linux & Wayland</span>
     </div>
   </div>
 
-  <div class="hero-main">
-    <h1 class="hero-title text-large-title">
+  <!-- Main Hero Content -->
+  <div class="flex flex-col gap-3.5 max-w-2xl">
+    <h1 class="text-white text-4xl sm:text-5xl font-bold tracking-tight leading-[1.12]">
       Amal Raj
     </h1>
 
-    <p class="hero-tagline text-headline">
-      Tinkering with systems, Rust, and lean desktop tools on Linux.
+    <p class="text-neutral-200 text-lg sm:text-xl font-medium tracking-tight leading-snug">
+      Developer, tinkerer, and vibe coder.
     </p>
 
-    <p class="hero-bio text-body">
-      I grew up on hardware where every megabyte and background process mattered. When I find software that feels sluggish, bloated, or rough around the edges, I usually sit down and vibe code my own version—building native Wayland utilities and CLI tools that look clean, feel fast, and respect your machine.
+    <p class="text-neutral-400 text-base sm:text-[17px] leading-relaxed">
+      I build full-stack web applications and experiment with desktop tools on Linux. When I see an interface that feels cluttered or a tool I wish existed, I like to sit down and vibe code my own take on it—exploring ideas with AI, learning by building, and keeping things clean and lightweight.
     </p>
 
-    <div class="hero-cta-group">
-      <a href="#projects" class="button-primary">
+    <!-- CTAs with 44px touch targets -->
+    <div class="flex items-center gap-3 flex-wrap pt-3">
+      <a
+        href="#projects"
+        class="inline-flex items-center gap-2 h-11 px-5 rounded-pill bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold tracking-tight shadow-[0_4px_16px_rgba(14,165,233,0.35)] transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+      >
         <span>View Projects</span>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </a>
 
-      <a href="#writing" class="button-secondary">
+      <a
+        href="#writing"
+        class="inline-flex items-center gap-2 h-11 px-4.5 rounded-pill bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white text-sm font-medium tracking-tight border border-white/10 transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+      >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
           <path d="M6 6h10"></path>
           <path d="M6 10h10"></path>
         </svg>
-        <span>Devlogs & Notes</span>
+        <span>Notes & Case Studies</span>
       </a>
 
-      <a href="#about" class="button-glass">
-        <span>About & Ethos</span>
+      <a
+        href="mailto:amalMraj@proton.me"
+        class="inline-flex items-center gap-2 h-11 px-4 rounded-pill text-neutral-400 hover:text-sky-400 text-sm font-medium transition-colors duration-150"
+      >
+        <span>Get in touch &rarr;</span>
       </a>
     </div>
   </div>
 </section>
-
-<style>
-  .hero-section {
-    padding: var(--space-12) 0 var(--space-8);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-  }
-
-  .hero-badge-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-  }
-
-  .pulse-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--accent-green);
-    display: inline-block;
-  }
-
-  .hero-main {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    max-width: 680px;
-  }
-
-  .hero-title {
-    color: var(--text-primary);
-    font-size: clamp(34px, 5vw, 42px);
-    line-height: 1.15;
-    margin-top: var(--space-1);
-    letter-spacing: -0.5px;
-  }
-
-  .hero-tagline {
-    color: var(--text-primary);
-    font-weight: 500;
-    font-size: 19px;
-    line-height: 27px;
-    letter-spacing: -0.2px;
-  }
-
-  .hero-bio {
-    color: var(--text-secondary);
-    font-size: 16px;
-    line-height: 26px;
-    margin-top: 2px;
-  }
-
-  .hero-cta-group {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-    margin-top: var(--space-4);
-  }
-
-  .button-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: 42px;
-    padding: 0 18px;
-    background: var(--accent-blue);
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.2px;
-    border-radius: var(--radius-pill);
-    box-shadow: 0 4px 14px -2px rgba(10, 132, 255, 0.4);
-    transition: transform var(--spring-micro), background var(--spring-micro);
-  }
-
-  .button-primary:hover {
-    background: #0077ed;
-    transform: translateY(-1px);
-  }
-
-  .button-primary:active {
-    transform: scale(0.98);
-  }
-
-  .button-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: 42px;
-    padding: 0 16px;
-    background: rgba(10, 132, 255, 0.1);
-    color: #0a84ff;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.2px;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(10, 132, 255, 0.22);
-    transition: transform var(--spring-micro), background var(--spring-micro);
-  }
-
-  .button-secondary:hover {
-    background: rgba(10, 132, 255, 0.18);
-    transform: translateY(-1px);
-  }
-
-  .button-secondary:active {
-    transform: scale(0.98);
-  }
-
-  .button-glass {
-    display: inline-flex;
-    align-items: center;
-    min-height: 42px;
-    padding: 0 16px;
-    background: var(--surface-1);
-    color: var(--text-secondary);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: -0.2px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--glass-inner-shadow);
-    transition: transform var(--spring-micro), color var(--spring-micro), background var(--spring-micro);
-  }
-
-  .button-glass:hover {
-    color: var(--text-primary);
-    background: var(--surface-2);
-    transform: translateY(-1px);
-  }
-
-  .button-glass:active {
-    transform: scale(0.98);
-  }
-</style>
