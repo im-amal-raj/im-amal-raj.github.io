@@ -1,64 +1,76 @@
 ---
 import ContactPill from './react/ContactPill';
+import InteractiveConsole from './react/InteractiveConsole';
 ---
 
-<section class="pt-16 pb-12 sm:pt-20 sm:pb-16 flex flex-col items-start gap-6">
-  <!-- Status badges aligned to 8pt spatial grid -->
-  <div class="flex items-center gap-2.5 flex-wrap">
-    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_12px_rgba(52,211,153,0.15)]">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span>Kerala, India</span>
+<section class="pt-12 pb-10 sm:pt-16 sm:pb-14">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+    {/* Left Editorial Narrative Column */}
+    <div class="lg:col-span-7 flex flex-col items-start gap-5">
+      {/* Status Badges with Radar Pulse */}
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_12px_rgba(16,185,129,0.18)]">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>Open for builds</span>
+          <span class="text-neutral-500">·</span>
+          <span class="text-neutral-300">Kerala, India</span>
+        </div>
+        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-medium bg-white/5 text-neutral-300 border border-white/10 backdrop-blur-md">
+          <span>Python & Django</span>
+        </div>
+        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-medium bg-white/5 text-neutral-300 border border-white/10 backdrop-blur-md">
+          <span>Wayland & Linux</span>
+        </div>
+      </div>
+
+      {/* Main Hero Headline */}
+      <div class="flex flex-col gap-3">
+        <h1 class="text-white text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight leading-[1.08]">
+          Amal Raj
+        </h1>
+        <p class="text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-neutral-200 to-sky-400 text-lg sm:text-xl font-medium tracking-tight">
+          Crafting tactile software, Linux tools, and resilient full-stack systems.
+        </p>
+      </div>
+
+      <p class="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-xl">
+        I engineer full-stack web platforms and craft native Linux desktop tools. By pairing deep architectural taste with AI-accelerated vibe coding, I eliminate boilerplates and build tactile, lightweight software that feels great in daily use.
+      </p>
+
+      {/* Action Buttons & Contact Pill */}
+      <div class="flex items-center gap-3 flex-wrap pt-2">
+        <a
+          href="#projects"
+          class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold tracking-tight shadow-[0_4px_16px_rgba(14,165,233,0.35)] transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+        >
+          <span>View Projects</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+
+        <a
+          href="#writing"
+          class="inline-flex items-center gap-2 h-11 px-4.5 rounded-full bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white text-sm font-medium tracking-tight border border-white/10 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+            <path d="M6 6h10"></path>
+            <path d="M6 10h10"></path>
+          </svg>
+          <span>Notes & Case Studies</span>
+        </a>
+
+        <ContactPill client:visible />
+      </div>
     </div>
-    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-300 border border-white/10 backdrop-blur-md">
-      <span>Python & Django</span>
-    </div>
-    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-300 border border-white/10 backdrop-blur-md">
-      <span>Wayland & Linux</span>
-    </div>
-    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
-      <span>Vibe Coder</span>
-    </div>
-  </div>
 
-  <!-- Main Hero Narrative -->
-  <div class="flex flex-col gap-4 max-w-2xl">
-    <h1 class="text-white text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.12]">
-      Amal Raj
-    </h1>
-
-    <p class="text-neutral-200 text-lg sm:text-xl font-medium tracking-tight leading-snug">
-      Developer, tinkerer, and vibe coder.
-    </p>
-
-    <p class="text-neutral-400 text-base sm:text-[17px] leading-relaxed">
-      I build full-stack web applications and experiment with desktop tools on Linux. When I see an interface that feels cluttered or a tool I wish existed, I sit down and vibe code my own take on it—exploring ideas with AI, learning by building, and prioritizing lightweight, tactile software.
-    </p>
-
-    <!-- CTAs with 44px touch targets and interactive contact pill -->
-    <div class="flex items-center gap-3.5 flex-wrap pt-2">
-      <a
-        href="#projects"
-        class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold tracking-tight shadow-[0_4px_16px_rgba(14,165,233,0.35)] transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-      >
-        <span>View Projects</span>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </a>
-
-      <a
-        href="#writing"
-        class="inline-flex items-center gap-2 h-11 px-4.5 rounded-full bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white text-sm font-medium tracking-tight border border-white/10 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-      >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
-          <path d="M6 6h10"></path>
-          <path d="M6 10h10"></path>
-        </svg>
-        <span>Notes & Case Studies</span>
-      </a>
-
-      <ContactPill client:visible />
+    {/* Right Engineering Console Column */}
+    <div class="lg:col-span-5 w-full">
+      <InteractiveConsole client:load />
     </div>
   </div>
 </section>

@@ -1,0 +1,122 @@
+---
+import AudioDspWidget from './react/AudioDspWidget';
+---
+
+<section id="about" class="py-12 sm:py-16 border-t border-white/10">
+  <div class="mb-8 flex flex-col gap-2">
+    <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
+      <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+      <span>Engineering & Craft</span>
+    </div>
+    <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">How I Build & Explore</h2>
+    <p class="text-neutral-400 text-sm sm:text-base max-w-xl">
+      A tactile bento overview of my daily-driver systems, vibe-coding methodology, and audio engineering experiments.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    {/* Card 1: Vibe-Coding Manifesto (2 Columns) */}
+    <div class="md:col-span-2 p-6 sm:p-7 rounded-[22px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_16px_36px_-12px_rgba(0,0,0,0.65)] flex flex-col justify-between gap-5 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <span class="text-[11px] font-mono text-neutral-400 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">
+            Philosophy
+          </span>
+        </div>
+
+        <h3 class="text-white text-lg font-bold tracking-tight">
+          Architectural Taste & AI Velocity
+        </h3>
+        <p class="text-neutral-300 text-sm leading-relaxed">
+          I don't waste time typing boilerplate by hand. Instead, I focus on what truly differentiates great software: clear mental models, resilient data schemas, and fluid interaction physics. By pairing architectural vision with AI coding agents, I can build and iterate on complex tools—from Wayland desktop widgets to end-to-end web applications—in record time with zero fluff.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-xl bg-black/50 border border-white/5 font-mono text-xs flex flex-col gap-2">
+        <div class="flex items-center justify-between text-[11px] text-neutral-400 border-b border-white/5 pb-1.5">
+          <span>// vibe-coding workflow</span>
+          <span class="text-emerald-400">verified</span>
+        </div>
+        <div class="text-neutral-300">
+          <span class="text-purple-400">const</span> pipeline = [<span class="text-sky-300">'architect-schema'</span>, <span class="text-sky-300">'prompt-jit-code'</span>, <span class="text-sky-300">'audit-memory'</span>, <span class="text-sky-300">'ship-tactile'</span>];
+        </div>
+      </div>
+    </div>
+
+    {/* Card 2: Audio DSP & Ambient Sound (1 Column) */}
+    <div class="p-6 sm:p-7 rounded-[22px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_16px_36px_-12px_rgba(0,0,0,0.65)] flex flex-col justify-between gap-5 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+      <div class="flex flex-col gap-3">
+        <AudioDspWidget client:visible />
+      </div>
+
+      <div class="pt-2 border-t border-white/5 text-xs text-neutral-400 leading-relaxed">
+        Tuned real-time PipeWire DSP filters on CachyOS kernel to achieve broadcast clarity and <span class="text-neutral-200 font-mono">1.3ms</span> round-trip audio latency.
+      </div>
+    </div>
+
+    {/* Card 3: Wayland & Linux Rig (1 Column) */}
+    <div class="p-6 sm:p-7 rounded-[22px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_16px_36px_-12px_rgba(0,0,0,0.65)] flex flex-col justify-between gap-4 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+      <div class="flex flex-col gap-3">
+        <div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M9 21V9"></path>
+          </svg>
+        </div>
+
+        <h3 class="text-white text-base font-bold tracking-tight">Tactile Wayland Rig</h3>
+        <p class="text-neutral-300 text-xs sm:text-sm leading-relaxed">
+          Daily driving Niri scrollable-tiling compositor on Linux. Everything runs lean: native Rust binaries, zero Electron bloat, and smooth physical spring animations.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 pt-2 border-t border-white/5 font-mono text-[11px]">
+        <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">CachyOS</span>
+        <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Niri</span>
+        <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Slint</span>
+        <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Fish</span>
+      </div>
+    </div>
+
+    {/* Card 4: Full-Stack Systems Matrix (2 Columns) */}
+    <div class="md:col-span-2 p-6 sm:p-7 rounded-[22px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_16px_36px_-12px_rgba(0,0,0,0.65)] flex flex-col justify-between gap-4 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-white text-base font-bold tracking-tight">Full-Stack Core & Tooling</h3>
+            <span class="text-xs text-neutral-400">Production-tested tools and frameworks</span>
+          </div>
+        </div>
+
+        <p class="text-neutral-300 text-xs sm:text-sm leading-relaxed">
+          My backend foundation is built around Python and Django—crafting transactional data models, relational databases, and clean REST APIs, complemented by modern frontend performance in Astro and React.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-2 pt-2 border-t border-white/5 font-mono text-xs">
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">Python</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">Django</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">PostgreSQL</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">SQLite</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">React 19</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">Astro v5</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">Tailwind CSS v4</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 text-neutral-200 border border-white/10 hover:border-sky-500/40 transition-colors">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
