@@ -18,4 +18,4 @@ tech:
 
 I love using Linux on Wayland, but desktop bars often felt either rigid or heavy. I wanted something with the tactile feel and fluid spring motion you get on modern mobile interfaces, but sitting cleanly at the top of my desktop.
 
-I had a clear vision for how it should expand, collapse, and react to system events like audio changes and workspace switching. Working with AI tools, we vibe-coded the logic using Slint UI and Rust. It hooks into the Wayland Layer Shell protocol and D-Bus so it stays responsive, lightweight, and unobtrusive.
+I had a clear vision for how it should expand, collapse, and react to system events like audio changes and workspace switching. I built the desktop bar using Slint UI and Rust, integrating directly with the Wayland Layer Shell protocol and D-Bus so it stays responsive, lightweight, and unobtrusive.

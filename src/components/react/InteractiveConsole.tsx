@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Cpu, Sparkles, CornerDownLeft, Volume2 } from 'lucide-react';
+import { Terminal, Cpu, Layers, CornerDownLeft } from 'lucide-react';
 
-type ConsoleTab = 'telemetry' | 'vibe' | 'cli';
+type ConsoleTab = 'telemetry' | 'stack' | 'cli';
 
 interface TerminalLine {
   id: string;
@@ -26,12 +26,12 @@ export default function InteractiveConsole() {
     {
       id: 'init-1',
       type: 'system',
-      text: 'amal@cachyos-rig:~$ welcome to amal raj interactive console v2.4',
+      text: 'amal@cachyos-rig:~$ interactive console online',
     },
     {
       id: 'init-2',
       type: 'system',
-      text: 'Type a command or click one of the quick pills below (e.g. projects, rig, stack).',
+      text: 'Type a command or click a quick action (projects, rig, stack, contact).',
     },
   ]);
 
@@ -58,27 +58,27 @@ export default function InteractiveConsole() {
 
       case 'projects':
         newLines.push(
-          { id: `out-${Date.now()}-1`, type: 'output', text: '1. Dynamic Island (Slint UI + Rust) - Native Wayland top-bar', link: '#projects' },
-          { id: `out-${Date.now()}-2`, type: 'output', text: '2. RestroBill (Python / Django) - Restaurant POS & table management', link: '#projects' },
-          { id: `out-${Date.now()}-3`, type: 'output', text: '3. Event Organizer (Django / SQLite) - Scalable attendee ticketing', link: '#projects' },
+          { id: `out-${Date.now()}-1`, type: 'output', text: '1. Dynamic Island (Slint + Rust) - Native Wayland top-bar for Niri', link: '#projects' },
+          { id: `out-${Date.now()}-2`, type: 'output', text: '2. RestroBill (Python / Django) - Restaurant POS & table orders', link: '#projects' },
+          { id: `out-${Date.now()}-3`, type: 'output', text: '3. Event Organizer (Django / SQLite) - Registration & ticket system', link: '#projects' },
           { id: `out-${Date.now()}-4`, type: 'output', text: '4. Discord AutoBot (Python / AsyncIO) - Workflow automation engine', link: '#projects' }
         );
         break;
 
       case 'stack':
         newLines.push(
-          { id: `out-${Date.now()}-1`, type: 'output', text: 'Languages:   Python, Rust, TypeScript, JavaScript' },
-          { id: `out-${Date.now()}-2`, type: 'output', text: 'Frameworks:  Django, React 19, Astro v5, Tailwind CSS v4' },
-          { id: `out-${Date.now()}-3`, type: 'output', text: 'Systems:     Wayland Layer Shell, Slint, PipeWire DSP, Linux' }
+          { id: `out-${Date.now()}-1`, type: 'output', text: 'Backend:   Python, Django, PostgreSQL, SQLite, REST APIs' },
+          { id: `out-${Date.now()}-2`, type: 'output', text: 'Desktop:   Rust, Slint UI, Wayland Layer Shell, D-Bus' },
+          { id: `out-${Date.now()}-3`, type: 'output', text: 'Frontend:  React 19, Astro v5, Tailwind CSS v4, TypeScript' }
         );
         break;
 
       case 'rig':
         newLines.push(
-          { id: `out-${Date.now()}-1`, type: 'output', text: 'OS:          CachyOS Linux x86_64 (Custom Kernel)' },
+          { id: `out-${Date.now()}-1`, type: 'output', text: 'OS:          CachyOS Linux x86_64 (Real-time tuned kernel)' },
           { id: `out-${Date.now()}-2`, type: 'output', text: 'Compositor:  Niri (Scrollable-tiling Wayland)' },
           { id: `out-${Date.now()}-3`, type: 'output', text: 'Audio DSP:   PipeWire + DeepFilterNet 3 (1.3ms buffer)' },
-          { id: `out-${Date.now()}-4`, type: 'output', text: 'Memory Bar:  Slint native Dynamic Island (18 MB RSS)' }
+          { id: `out-${Date.now()}-4`, type: 'output', text: 'Desktop Bar: Slint native Dynamic Island (18 MB resident memory)' }
         );
         break;
 
@@ -86,7 +86,7 @@ export default function InteractiveConsole() {
         newLines.push(
           { id: `out-${Date.now()}-1`, type: 'output', text: 'Email:  amalMraj@proton.me' },
           { id: `out-${Date.now()}-2`, type: 'output', text: 'GitHub: https://github.com/im-amal-raj' },
-          { id: `out-${Date.now()}-3`, type: 'output', text: 'Status: Open for interesting projects & contract builds' }
+          { id: `out-${Date.now()}-3`, type: 'output', text: 'Availability: Open for development projects & contract work' }
         );
         break;
 
@@ -115,7 +115,7 @@ export default function InteractiveConsole() {
   }, [terminalHistory, activeTab]);
 
   return (
-    <div className="w-full rounded-[22px] bg-neutral-950/75 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.14),0_20px_40px_-12px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-mono text-xs">
+    <div className="w-full rounded-[22px] bg-neutral-950/75 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_20px_40px_-12px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col font-mono text-xs">
       {/* Console Chrome Header */}
       <div className="flex items-center justify-between px-4 py-3 bg-white/[0.03] border-b border-white/10 select-none">
         <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ export default function InteractiveConsole() {
           </span>
         </div>
 
-        {/* Tab Switcher Pills */}
+        {/* Tab Switcher Pills with WWDC Spring Physics */}
         <div className="flex items-center gap-1 p-0.5 rounded-lg bg-black/40 border border-white/5 font-sans">
           <button
             onClick={() => setActiveTab('telemetry')}
@@ -142,20 +142,20 @@ export default function InteractiveConsole() {
             Telemetry
           </button>
           <button
-            onClick={() => setActiveTab('vibe')}
+            onClick={() => setActiveTab('stack')}
             className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all ${
-              activeTab === 'vibe'
+              activeTab === 'stack'
                 ? 'bg-white/15 text-white shadow-sm'
                 : 'text-neutral-400 hover:text-white'
             }`}
           >
-            Philosophy
+            Stack
           </button>
           <button
             onClick={() => setActiveTab('cli')}
             className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all flex items-center gap-1.5 ${
               activeTab === 'cli'
-                ? 'bg-sky-500 text-white shadow-[0_0_12px_rgba(14,165,233,0.4)]'
+                ? 'bg-sky-500 text-white shadow-[0_0_12px_rgba(56,189,248,0.4)]'
                 : 'text-neutral-400 hover:text-white'
             }`}
           >
@@ -191,7 +191,7 @@ export default function InteractiveConsole() {
               <div className="grid grid-cols-2 gap-2.5 font-mono text-[11px]">
                 <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-1">
                   <span className="text-neutral-400 text-[10px]">OS / KERNEL</span>
-                  <span className="text-neutral-200 font-semibold truncate">CachyOS Linux (x86_64)</span>
+                  <span className="text-neutral-200 font-semibold truncate">CachyOS Linux x86_64</span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-1">
                   <span className="text-neutral-400 text-[10px]">WAYLAND COMPOSITOR</span>
@@ -199,7 +199,7 @@ export default function InteractiveConsole() {
                 </div>
                 <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-1">
                   <span className="text-neutral-400 text-[10px]">DESKTOP TOOLKIT</span>
-                  <span className="text-indigo-400 font-semibold truncate">Slint UI + Rust</span>
+                  <span className="text-neutral-200 font-semibold truncate">Slint UI + Rust</span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-1">
                   <span className="text-neutral-400 text-[10px]">AUDIO PIPELINE</span>
@@ -210,16 +210,16 @@ export default function InteractiveConsole() {
               <div className="pt-1 flex items-center justify-between text-[11px] text-neutral-400">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-                  Tactile UX without background bloat
+                  Lean desktop setup
                 </span>
-                <span className="font-mono text-neutral-400">18 MB baseline RSS</span>
+                <span className="font-mono text-neutral-400">18 MB baseline memory</span>
               </div>
             </motion.div>
           )}
 
-          {activeTab === 'vibe' && (
+          {activeTab === 'stack' && (
             <motion.div
-              key="vibe"
+              key="stack"
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
@@ -227,15 +227,23 @@ export default function InteractiveConsole() {
               className="flex flex-col gap-3 font-sans"
             >
               <div className="flex items-center gap-2 pb-2 border-b border-white/5">
-                <Sparkles size={14} className="text-amber-400" />
-                <span className="text-xs font-semibold text-white">Vibe-Coding Engineering Ethos</span>
+                <Layers size={14} className="text-sky-400" />
+                <span className="text-xs font-semibold text-white">Technical Core</span>
               </div>
-              <p className="text-neutral-300 text-xs leading-relaxed">
-                <strong className="text-white">Taste over syntax memorization:</strong> I pair deep architectural intuition with AI coding velocity. Rather than getting bogged down in boilerplate, I architect the system, calibrate physical motion springs, and guide AI agents to deliver lean, production-grade software.
-              </p>
-              <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between text-[11px]">
-                <span className="text-neutral-400">Approach</span>
-                <span className="text-amber-300 font-mono">Clean Architecture + Fast Iteration</span>
+              
+              <div className="grid grid-cols-1 gap-2 font-mono text-[11px]">
+                <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-1">
+                  <span className="text-neutral-400 text-[10px]">BACKEND & STORAGE</span>
+                  <span className="text-neutral-200">Python, Django, PostgreSQL, SQLite, REST</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-1">
+                  <span className="text-neutral-400 text-[10px]">DESKTOP & SYSTEMS</span>
+                  <span className="text-neutral-200">Rust, Slint UI, Wayland Layer Shell, PipeWire</span>
+                </div>
+              </div>
+
+              <div className="pt-1 text-[11px] text-neutral-400 leading-relaxed font-sans">
+                Focused on maintainable relational architectures, fast query execution, and zero unnecessary runtime bloat.
               </div>
             </motion.div>
           )}

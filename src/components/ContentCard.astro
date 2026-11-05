@@ -24,7 +24,7 @@ const isExternal = Boolean(externalUrl);
       <div class="flex items-center gap-2">
         <span class="font-semibold uppercase tracking-wider text-sky-400 text-[11px] font-mono">{category}</span>
         <span>·</span>
-        <time datetime={pubDate.toISOString()} class="text-neutral-400 font-mono text-[11px]">{formattedDate}</time>
+        <time datetime={pubDate.toISOString()} class="text-neutral-400 font-mono text-[11px] tabular-nums">{formattedDate}</time>
         {readTime && (
           <>
             <span>·</span>

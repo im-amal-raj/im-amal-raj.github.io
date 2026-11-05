@@ -6,16 +6,16 @@ import AudioDspWidget from './react/AudioDspWidget';
   <div class="mb-8 flex flex-col gap-2">
     <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
       <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-      <span>Engineering & Craft</span>
+      <span>Engineering & Systems</span>
     </div>
-    <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-tight">How I Build & Explore</h2>
+    <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-title">How I Build & Work</h2>
     <p class="text-neutral-400 text-sm sm:text-base max-w-xl">
-      A tactile bento overview of my daily-driver systems, vibe-coding methodology, and audio engineering experiments.
+      An overview of my daily-driver systems, backend architectures, and Linux desktop environment.
     </p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-    {/* Card 1: Vibe-Coding Manifesto (2 Columns) */}
+    {/* Card 1: Backend & Full-Stack Systems (2 Columns) */}
     <div class="md:col-span-2 p-6 sm:p-7 rounded-[22px] bg-neutral-900/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_16px_36px_-12px_rgba(0,0,0,0.65)] flex flex-col justify-between gap-5 transition-all duration-300 hover:border-white/20 hover:-translate-y-0.5">
       <div class="flex flex-col gap-3">
         <div class="flex items-center justify-between">
@@ -26,25 +26,27 @@ import AudioDspWidget from './react/AudioDspWidget';
             </svg>
           </div>
           <span class="text-[11px] font-mono text-neutral-400 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">
-            Philosophy
+            Architecture
           </span>
         </div>
 
         <h3 class="text-white text-lg font-bold tracking-tight">
-          Architectural Taste & AI Velocity
+          Backend Architecture & Relational Design
         </h3>
         <p class="text-neutral-300 text-sm leading-relaxed">
-          I don't waste time typing boilerplate by hand. Instead, I focus on what truly differentiates great software: clear mental models, resilient data schemas, and fluid interaction physics. By pairing architectural vision with AI coding agents, I can build and iterate on complex tools—from Wayland desktop widgets to end-to-end web applications—in record time with zero fluff.
+          I build web applications with an emphasis on reliable relational models, transaction safety, and straightforward execution paths. In Django and PostgreSQL, that means designing normalized table schemas, indexing query paths, and structuring maintainable REST endpoints without superfluous middleware.
         </p>
       </div>
 
-      <div class="p-4 rounded-xl bg-black/50 border border-white/5 font-mono text-xs flex flex-col gap-2">
+      <div class="p-4 rounded-xl bg-black/50 border border-white/5 font-mono text-xs flex flex-col gap-1.5">
         <div class="flex items-center justify-between text-[11px] text-neutral-400 border-b border-white/5 pb-1.5">
-          <span>// vibe-coding workflow</span>
-          <span class="text-emerald-400">verified</span>
+          <span>// transactional ordering schema</span>
+          <span class="text-emerald-400">atomic</span>
         </div>
-        <div class="text-neutral-300">
-          <span class="text-purple-400">const</span> pipeline = [<span class="text-sky-300">'architect-schema'</span>, <span class="text-sky-300">'prompt-jit-code'</span>, <span class="text-sky-300">'audit-memory'</span>, <span class="text-sky-300">'ship-tactile'</span>];
+        <div class="text-neutral-300 space-y-0.5">
+          <div><span class="text-purple-400">class</span> <span class="text-sky-300">OrderSession</span>(models.Model):</div>
+          <div class="pl-4 text-neutral-400">table = models.ForeignKey(Table, on_delete=models.CASCADE)</div>
+          <div class="pl-4 text-neutral-400">status = models.CharField(max_length=20, default=<span class="text-emerald-300">'active'</span>)</div>
         </div>
       </div>
     </div>
@@ -55,8 +57,8 @@ import AudioDspWidget from './react/AudioDspWidget';
         <AudioDspWidget client:visible />
       </div>
 
-      <div class="pt-2 border-t border-white/5 text-xs text-neutral-400 leading-relaxed">
-        Tuned real-time PipeWire DSP filters on CachyOS kernel to achieve broadcast clarity and <span class="text-neutral-200 font-mono">1.3ms</span> round-trip audio latency.
+      <div class="pt-2 border-t border-white/5 text-xs text-neutral-400 leading-relaxed font-sans">
+        Configured real-time PipeWire DSP filters on CachyOS to achieve broadcast audio clarity with <span class="text-neutral-200 font-mono">1.3ms</span> kernel round-trip latency.
       </div>
     </div>
 
@@ -71,9 +73,9 @@ import AudioDspWidget from './react/AudioDspWidget';
           </svg>
         </div>
 
-        <h3 class="text-white text-base font-bold tracking-tight">Tactile Wayland Rig</h3>
+        <h3 class="text-white text-base font-bold tracking-tight">Wayland Desktop Environment</h3>
         <p class="text-neutral-300 text-xs sm:text-sm leading-relaxed">
-          Daily driving Niri scrollable-tiling compositor on Linux. Everything runs lean: native Rust binaries, zero Electron bloat, and smooth physical spring animations.
+          Daily driving Niri scrollable-tiling compositor on Linux. Desktop tools are built as native compiled Rust binaries using Slint UI and the Wayland Layer Shell protocol.
         </p>
       </div>
 
@@ -81,7 +83,7 @@ import AudioDspWidget from './react/AudioDspWidget';
         <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">CachyOS</span>
         <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Niri</span>
         <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Slint</span>
-        <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Fish</span>
+        <span class="px-2 py-0.5 rounded-md bg-white/5 text-neutral-300">Rust</span>
       </div>
     </div>
 
@@ -97,13 +99,13 @@ import AudioDspWidget from './react/AudioDspWidget';
             </svg>
           </div>
           <div>
-            <h3 class="text-white text-base font-bold tracking-tight">Full-Stack Core & Tooling</h3>
-            <span class="text-xs text-neutral-400">Production-tested tools and frameworks</span>
+            <h3 class="text-white text-base font-bold tracking-tight">Full-Stack Stack & Tools</h3>
+            <span class="text-xs text-neutral-400">Core technologies used across projects</span>
           </div>
         </div>
 
         <p class="text-neutral-300 text-xs sm:text-sm leading-relaxed">
-          My backend foundation is built around Python and Django—crafting transactional data models, relational databases, and clean REST APIs, complemented by modern frontend performance in Astro and React.
+          My primary stack spans server-side Python and Django with PostgreSQL, combined with Astro, React, and Tailwind CSS for client delivery.
         </p>
       </div>
 
