@@ -15,10 +15,10 @@
       <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[Notes on Vibe-Coding a Dynamic Island for Wayland]]></title>
+      <title><![CDATA[Notes on Building a Fluid Dynamic Island for Wayland]]></title>
       <link>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</link>
       <guid>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</guid>
-      <description><![CDATA[How having a clear visual idea and collaborating with AI tools brought a fluid desktop widget to life on Linux.]]></description>
+      <description><![CDATA[Designing and implementing a fluid, spring-animated top-bar for Linux using Slint UI and Rust.]]></description>
       <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
