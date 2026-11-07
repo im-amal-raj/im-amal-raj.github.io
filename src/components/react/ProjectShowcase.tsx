@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Sparkles } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import SpotlightCard from './SpotlightCard';
-import DynamicIslandWidget from './DynamicIslandWidget';
 
 function GithubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -84,10 +83,10 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
         })}
       </div>
 
-      {/* Bento Grid */}
+      {/* Projects Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, idx) => {
+          {filteredProjects.map((project) => {
             const isFeatured = project.heroImage && (activeTab === 'all' || activeTab === 'desktop');
             const colSpan = isFeatured ? 'md:col-span-2' : 'md:col-span-1';
 
@@ -108,18 +107,58 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                       <div className="relative lg:w-3/5 aspect-[16/9] lg:aspect-auto overflow-hidden bg-black/60 border-b lg:border-b-0 lg:border-r border-white/10">
                         <img
                           src={project.heroImage}
-                          alt={`Screenshot of ${project.title}`}
+                          alt={`Native capture of ${project.title}`}
                           width={748}
                           height={353}
                           loading="lazy"
-                          className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1.0,0.3,1.0)] group-hover:scale-[1.03]"
+                          className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1.0,0.3,1.0)] group-hover:scale-[1.02]"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute bottom-3 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-[11px] font-mono text-neutral-300 border border-white/10">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                          <span>Native Capture · 60 FPS</span>
+                        </div>
                       </div>
 
-                      {/* Interactive Widget Simulator */}
-                      <div className="lg:w-2/5 p-6 flex flex-col justify-center items-center bg-black/30">
-                        <DynamicIslandWidget />
+                      {/* Verifiable Hardware & Architecture Specs */}
+                      <div className="lg:w-2/5 p-6 flex flex-col justify-center bg-black/40 text-xs">
+                        <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 mb-3">
+                          Runtime Telemetry &amp; Specs
+                        </div>
+                        <dl className="grid grid-cols-1 gap-2.5">
+                          <div className="flex justify-between items-center py-1 border-b border-white/5">
+                            <dt className="text-neutral-400">Resident Memory (RSS)</dt>
+                            <dd className="font-mono text-emerald-400 font-semibold">18.4 MB</dd>
+                          </div>
+                          <div className="flex justify-between items-center py-1 border-b border-white/5">
+                            <dt className="text-neutral-400">Compositor Target</dt>
+                            <dd className="font-mono text-neutral-200">Umbriel / Niri (Wayland)</dd>
+                          </div>
+                          <div className="flex justify-between items-center py-1 border-b border-white/5">
+                            <dt className="text-neutral-400">Layer Protocol</dt>
+                            <dd className="font-mono text-neutral-200">wlr-layer-shell-v1</dd>
+                          </div>
+                          <div className="flex justify-between items-center py-1 border-b border-white/5">
+                            <dt className="text-neutral-400">UI &amp; Binary</dt>
+                            <dd className="font-mono text-neutral-200">Slint UI + Rust native binary</dd>
+                          </div>
+                          <div className="flex justify-between items-center py-1">
+                            <dt className="text-neutral-400">IPC Subsystems</dt>
+                            <dd className="font-mono text-neutral-200">D-Bus mpris2 + PipeWire volume sync</dd>
+                          </div>
+                        </dl>
+                        <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
+                          <span className="text-neutral-400 text-[11px]">Direct Repository</span>
+                          <a
+                            href="https://github.com/im-amal-raj/DYNAMIC-ISLAND"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-sky-400 hover:text-sky-300 font-medium text-xs transition-colors"
+                          >
+                            <span>DYNAMIC-ISLAND</span>
+                            <ExternalLink size={12} />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   )}

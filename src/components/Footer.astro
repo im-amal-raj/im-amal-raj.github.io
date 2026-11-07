@@ -2,35 +2,51 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mt-auto border-t border-white/10 bg-neutral-950/70 py-12">
-  <div class="container mx-auto max-w-5xl px-4 sm:px-6 md:px-7 lg:px-8 xl:max-w-6xl flex flex-col sm:flex-row justify-between items-start gap-8">
-    <div class="flex flex-col gap-2 max-w-sm">
-      <div class="flex items-center gap-2 text-sm font-semibold text-white tracking-tight">
-        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-        <span>Amal Raj</span>
-      </div>
-      <p class="text-xs text-neutral-400 leading-relaxed">
-        Developer based in Kerala, India. Building web applications and experimenting with Linux desktop tools.
-      </p>
-      <p class="text-[11px] text-neutral-500 mt-2">
-        © {currentYear} Amal Raj. Hosted on GitHub Pages.
-      </p>
-    </div>
-
-    <div class="flex gap-10 sm:gap-16">
-      <div class="flex flex-col gap-2 text-xs">
-        <span class="font-semibold uppercase tracking-wider text-neutral-400 mb-1">Projects</span>
-        <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">Dynamic Island</a>
-        <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">RestroBill</a>
-        <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">Event Organizer</a>
+<footer class="mt-auto border-t border-white/10 bg-neutral-950/80 py-12 sm:py-16">
+  <div class="container mx-auto max-w-5xl px-4 sm:px-6 md:px-7 lg:px-8 xl:max-w-6xl flex flex-col gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <!-- Author & Identity -->
+      <div class="md:col-span-5 flex flex-col gap-3">
+        <div class="flex items-center gap-2 text-sm font-semibold text-white tracking-tight">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Amal Raj</span>
+        </div>
+        <p class="text-xs text-neutral-400 leading-relaxed max-w-sm">
+          Developer based in Kerala, India. Crafting reliable web applications and native Linux desktop tools with minimal background footprints.
+        </p>
+        <p class="text-[11px] font-mono text-neutral-500 mt-1">
+          © {currentYear} Amal Raj · Hosted on GitHub Pages
+        </p>
       </div>
 
-      <div class="flex flex-col gap-2 text-xs">
-        <span class="font-semibold uppercase tracking-wider text-neutral-400 mb-1">Connect</span>
-        <a href="https://github.com/im-amal-raj" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">GitHub</a>
-        <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">LinkedIn</a>
-        <a href="https://dev.to/im-amal-raj" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">Dev.to</a>
-        <a href="mailto:amalMraj@proton.me" class="text-neutral-400 hover:text-sky-400 transition-colors duration-150">Email</a>
+      <!-- Grounded Colophon / Daily Driver Environment -->
+      <div class="md:col-span-4 flex flex-col gap-2.5 text-xs">
+        <span class="font-semibold uppercase tracking-wider text-neutral-300 mb-0.5">Colophon &amp; Daily Driver</span>
+        <ul class="space-y-1.5 text-neutral-400 font-mono text-[11px]">
+          <li><span class="text-neutral-500">Compositor:</span> Umbriel (Wayland)</li>
+          <li><span class="text-neutral-500">Desktop Bar:</span> Noctalia (Slint UI + Rust)</li>
+          <li><span class="text-neutral-500">Terminal &amp; Shell:</span> Ghostty + zsh</li>
+          <li><span class="text-neutral-500">Audio Pipeline:</span> PipeWire DSP</li>
+          <li><span class="text-neutral-500">Primary Stack:</span> Rust · Python/Django · TypeScript · Astro</li>
+        </ul>
+      </div>
+
+      <!-- Direct Navigation & Contact -->
+      <div class="md:col-span-3 flex gap-8">
+        <div class="flex flex-col gap-2 text-xs">
+          <span class="font-semibold uppercase tracking-wider text-neutral-300 mb-1">Index</span>
+          <a href="#projects" class="text-neutral-400 hover:text-white transition-colors duration-150">Projects</a>
+          <a href="#writing" class="text-neutral-400 hover:text-white transition-colors duration-150">Writing</a>
+          <a href="/rss.xml" class="text-neutral-400 hover:text-white transition-colors duration-150">RSS Feed</a>
+        </div>
+
+        <div class="flex flex-col gap-2 text-xs">
+          <span class="font-semibold uppercase tracking-wider text-neutral-300 mb-1">Connect</span>
+          <a href="https://github.com/im-amal-raj" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">GitHub</a>
+          <a href="https://www.linkedin.com/in/im-amal-raj/" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">LinkedIn</a>
+          <a href="https://dev.to/im-amal-raj" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors duration-150">Dev.to</a>
+          <a href="mailto:amalMraj@proton.me" class="text-neutral-400 hover:text-sky-400 transition-colors duration-150">Email</a>
+        </div>
       </div>
     </div>
   </div>

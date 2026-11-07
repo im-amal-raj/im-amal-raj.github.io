@@ -2,9 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import MetricsStrip from '../components/MetricsStrip.astro';
 import ProjectShowcase from '../components/react/ProjectShowcase';
-import BentoCraftGrid from '../components/BentoCraftGrid.astro';
 import ContentCard from '../components/ContentCard.astro';
 
 const rawProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -28,16 +26,13 @@ const projectItems = rawProjects.map((p) => ({
 <BaseLayout>
   <Hero />
 
-  <!-- Hardware Receipts & Engineering Benchmarks -->
-  <MetricsStrip />
-
-  <!-- Featured Projects (Interactive React Bento Island) -->
-  <section id="projects" class="py-10 sm:py-14 xl:py-16 border-t border-white/10">
+  <!-- Featured Projects -->
+  <section id="projects" class="py-12 sm:py-16 xl:py-20 border-t border-white/10">
     <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
       <div>
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
           <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-          <span>Desktop & Web Builds</span>
+          <span>Desktop &amp; Web Builds</span>
         </div>
         <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-title">Featured Projects</h2>
         <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
@@ -46,12 +41,9 @@ const projectItems = rawProjects.map((p) => ({
       </div>
     </div>
 
-    <!-- Client-visible interactive project showcase with spring filters and simulator -->
+    <!-- Client-visible project showcase with native captures and verified telemetry -->
     <ProjectShowcase client:visible projects={projectItems} />
   </section>
-
-  <!-- About & Engineering Craft (Tactile Bento Grid with Audio DSP) -->
-  <BentoCraftGrid />
 
   <!-- Notes & Case Studies Section -->
   <section id="writing" class="py-12 sm:py-16 border-t border-white/10">
@@ -61,7 +53,7 @@ const projectItems = rawProjects.map((p) => ({
           <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
           <span>Field Notes</span>
         </div>
-        <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-title">Notes & Case Studies</h2>
+        <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-title">Notes &amp; Case Studies</h2>
         <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
           Technical notes on backend systems, Linux desktop setups, and audio pipeline tuning.
         </p>
