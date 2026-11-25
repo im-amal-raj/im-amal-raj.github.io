@@ -8,20 +8,6 @@
     <language>en-us</language>
     
     <item>
-      <title><![CDATA[Fixing Microphone Hiss and Gain Staging on Linux]]></title>
-      <link>https://im-amal-raj.github.io/writing/audio-pipeline-calibration-cachyos</link>
-      <guid>https://im-amal-raj.github.io/writing/audio-pipeline-calibration-cachyos</guid>
-      <description><![CDATA[How auditing ALSA preamp levels and routing neural noise filters in PipeWire fixed an annoying motherboard electrical noise issue.]]></description>
-      <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Notes on Building a Fluid Dynamic Island for Wayland]]></title>
-      <link>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</link>
-      <guid>https://im-amal-raj.github.io/writing/building-an-apple-fluid-dynamic-island-on-wayland</guid>
-      <description><![CDATA[Designing and implementing a fluid, spring-animated top-bar for Linux using Slint UI and Rust.]]></description>
-      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
       <title><![CDATA[Case Study: Building a Full-Stack Event App with Django]]></title>
       <link>https://dev.to/im-amal-raj/case-study-building-a-full-stack-event-management-app-in-python-django-3h0f</link>
       <guid>https://im-amal-raj.github.io/writing/case-study-django-event-management</guid>
