@@ -1,0 +1,48 @@
+/* Compiled by powerpack design compile (vintage-paper | polarity: light)
+ * Constraint: Avoid rounded bubble cards and neon gradients; favor hairline dividers and generous editorial margins.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+@theme {
+  --color-canvas: oklch(0.955 0.014 82);
+  --color-surface: oklch(0.98 0.008 82);
+  --color-surface-elevated: oklch(0.925 0.015 80);
+  --color-border: oklch(0.24 0.015 65 / 0.14);
+  --color-text-primary: oklch(0.21 0.015 55);
+  --color-text-secondary: oklch(0.48 0.015 60);
+  --color-accent: oklch(0.50 0.13 28);
+  --radius-card: 4px;
+  --radius-button: 4px;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease-spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.723 12.9%, 0.938 18.7%, 1.017, 1.077 25.5%, 1.088 28.5%, 1.077 32.5%, 1.019 42.9%, 0.996 51.3%, 1.002 68.5%, 1);
+}
+
+:root {
+  --color-canvas: oklch(0.955 0.014 82);
+  --color-surface: oklch(0.98 0.008 82);
+  --color-surface-elevated: oklch(0.925 0.015 80);
+  --color-border: oklch(0.24 0.015 65 / 0.14);
+  --color-text-primary: oklch(0.21 0.015 55);
+  --color-text-secondary: oklch(0.48 0.015 60);
+  --color-accent: oklch(0.50 0.13 28);
+  --radius-card: 4px;
+  --radius-button: 4px;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease-spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.723 12.9%, 0.938 18.7%, 1.017, 1.077 25.5%, 1.088 28.5%, 1.077 32.5%, 1.019 42.9%, 0.996 51.3%, 1.002 68.5%, 1);
+}
+
+.pp-enter {
+  transition: opacity 240ms var(--ease-spring), transform 240ms var(--ease-spring), display 240ms allow-discrete;
+  transition-behavior: allow-discrete;
+}
+
+@starting-style {
+  .pp-enter {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}

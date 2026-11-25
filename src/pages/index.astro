@@ -1,72 +1,170 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import ProjectShowcase from '../components/react/ProjectShowcase';
-import ContentCard from '../components/ContentCard.astro';
 
-const rawProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const articles = (await getCollection('writing')).sort(
-  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const writing = (await getCollection('writing')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-
-const projectItems = rawProjects.map((p) => ({
-  title: p.data.title,
-  tagline: p.data.tagline,
-  category: p.data.category,
-  badge: p.data.badge,
-  tech: p.data.tech,
-  github: p.data.github,
-  demo: p.data.demo,
-  heroImage: p.data.heroImage,
-  slug: p.slug,
-}));
 ---
 
 <BaseLayout>
-  <Hero />
+  <header class="w-full shadow-[0_1px_0_0_var(--color-border)] bg-[var(--color-canvas)]">
+    <nav class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+      <a
+        href="/"
+        class="inline-flex min-h-[44px] items-center font-[family-name:var(--font-display)] text-2xl tracking-tight text-[var(--color-text-primary)]"
+      >
+        Amal Raj
+      </a>
+      <div class="flex items-center gap-2 sm:gap-4 text-sm text-[var(--color-text-secondary)]">
+        <a href="#projects" class="inline-flex min-h-[44px] items-center px-2 hover:text-[var(--color-text-primary)] transition-colors">
+          Projects
+        </a>
+        <a href="#writing" class="inline-flex min-h-[44px] items-center px-2 hover:text-[var(--color-text-primary)] transition-colors">
+          Writing
+        </a>
+        <a
+          href="https://github.com/im-amal-raj"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center px-2 hover:text-[var(--color-text-primary)] transition-colors"
+        >
+          GitHub
+        </a>
+      </div>
+    </nav>
+  </header>
 
-  <!-- Featured Projects -->
-  <section id="projects" class="py-12 sm:py-16 xl:py-20 border-t border-white/10">
-    <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
-      <div>
-        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-          <span>Desktop &amp; Web Builds</span>
-        </div>
-        <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-title">Featured Projects</h2>
-        <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
-          Desktop tools, full-stack web applications, and server utilities built to solve practical workflows.
-        </p>
+  <main class="mx-auto w-full max-w-3xl flex-1 px-6 py-12 sm:py-16 space-y-16">
+    <!-- Intro -->
+    <section aria-labelledby="intro-heading" class="space-y-6">
+      <h1
+        id="intro-heading"
+        class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl leading-[1.05] tracking-tight text-[var(--color-text-primary)]"
+      >
+        Amal Raj
+      </h1>
+      <p class="max-w-xl text-lg leading-relaxed text-[var(--color-text-secondary)]">
+        Full-stack web developer building with Python &amp; Django.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a
+          href="mailto:amalMraj@proton.me"
+          class="inline-flex min-h-[44px] items-center rounded-[var(--radius-button)] bg-[var(--color-text-primary)] px-5 py-2 text-sm font-medium text-[var(--color-surface)] hover:bg-[var(--color-accent)] transition-colors"
+        >
+          amalMraj@proton.me
+        </a>
+        <a
+          href="https://github.com/im-amal-raj"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center rounded-[var(--radius-button)] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] transition-colors"
+        >
+          github.com/im-amal-raj
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="projects-heading" class="space-y-6">
+      <h2
+        id="projects-heading"
+        class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-text-primary)]"
+      >
+        Projects
+      </h2>
+      <div class="divide-y divide-[var(--color-border)] border-t border-b border-[var(--color-border)]">
+        {projects.map((project) => (
+          <article class="py-6 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4">
+            <div class="space-y-2 max-w-xl">
+              <h3 class="text-lg font-semibold text-[var(--color-text-primary)]">
+                {project.data.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                {project.data.tagline}
+              </p>
+              <p class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-text-secondary)]">
+                {project.data.tech.join(' · ')}
+              </p>
+            </div>
+            {project.data.github && (
+              <a
+                href={project.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-[44px] shrink-0 items-center text-sm font-medium text-[var(--color-accent)] hover:underline"
+              >
+                Source &rarr;
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section id="writing" aria-labelledby="writing-heading" class="space-y-6">
+      <h2
+        id="writing-heading"
+        class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-text-primary)]"
+      >
+        Writing
+      </h2>
+      <div class="divide-y divide-[var(--color-border)] border-t border-b border-[var(--color-border)]">
+        {writing.map((post) => (
+          <article class="py-6 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4">
+            <div class="space-y-2 max-w-xl">
+              <h3 class="text-lg font-semibold text-[var(--color-text-primary)]">
+                {post.data.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                {post.data.description}
+              </p>
+            </div>
+            {post.data.externalUrl && (
+              <a
+                href={post.data.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-[44px] shrink-0 items-center text-sm font-medium text-[var(--color-accent)] hover:underline"
+              >
+                Read on Dev.to &rarr;
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="w-full shadow-[0_-1px_0_0_var(--color-border)] bg-[var(--color-canvas)]">
+    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-6 py-6 text-sm text-[var(--color-text-secondary)]">
+      <span>&copy; {new Date().getFullYear()} Amal Raj</span>
+      <div class="flex items-center gap-4">
+        <a
+          href="https://dev.to/im-amal-raj"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center hover:text-[var(--color-text-primary)] transition-colors"
+        >
+          Dev.to
+        </a>
+        <a
+          href="https://github.com/im-amal-raj"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center hover:text-[var(--color-text-primary)] transition-colors"
+        >
+          GitHub
+        </a>
+        <a
+          href="mailto:amalMraj@proton.me"
+          class="inline-flex min-h-[44px] items-center hover:text-[var(--color-text-primary)] transition-colors"
+        >
+          Email
+        </a>
       </div>
     </div>
-
-    <!-- Client-visible project showcase with native captures and verified telemetry -->
-    <ProjectShowcase client:visible projects={projectItems} />
-  </section>
-
-  <!-- Notes & Case Studies Section -->
-  <section id="writing" class="py-12 sm:py-16 border-t border-white/10">
-    <div class="flex items-end justify-between gap-4 mb-8 flex-wrap">
-      <div>
-        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-          <span>Field Notes</span>
-        </div>
-        <h2 class="text-white text-2xl sm:text-3xl font-bold tracking-title">Notes &amp; Case Studies</h2>
-        <p class="text-neutral-400 text-sm sm:text-base mt-1.5 max-w-xl">
-          Technical notes on backend systems, Linux desktop setups, and audio pipeline tuning.
-        </p>
-      </div>
-      <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-300 border border-white/10 font-mono">
-        <span>{articles.length} Posts</span>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {articles.map((article) => (
-        <ContentCard entry={article} />
-      ))}
-    </div>
-  </section>
+  </footer>
 </BaseLayout>
