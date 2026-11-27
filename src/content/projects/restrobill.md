@@ -11,6 +11,10 @@ tech:
   - "Django"
   - "SQLite"
   - "HTML/CSS"
+highlights:
+  - "Modeled relational databases for menu categories, items, tables, and invoice items."
+  - "Handled transactional integrity during order checkouts to ensure consistent table billing."
+  - "Designed an intuitive billing flow so staff can quickly add items to active tables without page reloads."
 ---
 
 ## Building a Real-World Billing Flow

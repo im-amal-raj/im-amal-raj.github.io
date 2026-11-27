@@ -11,6 +11,10 @@ tech:
   - "Django"
   - "ORM & Auth"
   - "RESTful APIs"
+highlights:
+  - "Implemented role-based permissions separating event organizers from general attendees."
+  - "Designed clean form validations and feedback states for scheduling and registrations."
+  - "Documented the architecture and database schema in an in-depth Dev.to case study."
 ---
 
 ## Community Event Management

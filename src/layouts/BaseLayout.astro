@@ -1,4 +1,5 @@
 ---
+import LenisScroller from '../components/react/LenisScroller';
 import '../styles/global.css';
 
 interface Props {
@@ -19,8 +20,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://im-amal-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f5f0e6" />
+
+    <script is:inline>
+      (function () {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
@@ -34,7 +47,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://im-amal-
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
   </head>
-  <body class="min-h-screen flex flex-col antialiased selection:bg-[var(--color-accent)] selection:text-[var(--color-surface)]">
+  <body class="min-h-screen flex flex-col antialiased">
+    <LenisScroller client:idle />
     <slot />
   </body>
 </html>

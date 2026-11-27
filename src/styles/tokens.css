@@ -1,7 +1,5 @@
-/* Compiled by powerpack design compile (vintage-paper | polarity: light)
- * Constraint: Avoid rounded bubble cards and neon gradients; favor hairline dividers and generous editorial margins.
- */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+/* Warm Paper & Cozy Espresso Tokens (light + dark) */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @theme {
   --color-canvas: oklch(0.955 0.014 82);
@@ -11,10 +9,10 @@
   --color-text-primary: oklch(0.21 0.015 55);
   --color-text-secondary: oklch(0.48 0.015 60);
   --color-accent: oklch(0.50 0.13 28);
-  --radius-card: 4px;
-  --radius-button: 4px;
+  --radius-card: 12px;
+  --radius-button: 10px;
   --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --ease-spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.723 12.9%, 0.938 18.7%, 1.017, 1.077 25.5%, 1.088 28.5%, 1.077 32.5%, 1.019 42.9%, 0.996 51.3%, 1.002 68.5%, 1);
 }
@@ -27,22 +25,20 @@
   --color-text-primary: oklch(0.21 0.015 55);
   --color-text-secondary: oklch(0.48 0.015 60);
   --color-accent: oklch(0.50 0.13 28);
-  --radius-card: 4px;
-  --radius-button: 4px;
+  --radius-card: 12px;
+  --radius-button: 10px;
   --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --ease-spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.723 12.9%, 0.938 18.7%, 1.017, 1.077 25.5%, 1.088 28.5%, 1.077 32.5%, 1.019 42.9%, 0.996 51.3%, 1.002 68.5%, 1);
 }
 
-.pp-enter {
-  transition: opacity 240ms var(--ease-spring), transform 240ms var(--ease-spring), display 240ms allow-discrete;
-  transition-behavior: allow-discrete;
-}
-
-@starting-style {
-  .pp-enter {
-    opacity: 0;
-    transform: translateY(6px);
-  }
+html.dark {
+  --color-canvas: oklch(0.18 0.014 55);
+  --color-surface: oklch(0.22 0.015 55);
+  --color-surface-elevated: oklch(0.26 0.016 55);
+  --color-border: oklch(0.92 0.015 75 / 0.12);
+  --color-text-primary: oklch(0.93 0.015 80);
+  --color-text-secondary: oklch(0.72 0.015 70);
+  --color-accent: oklch(0.68 0.14 35);
+  color-scheme: dark;
 }

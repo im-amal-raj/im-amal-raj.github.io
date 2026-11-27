@@ -11,6 +11,10 @@ tech:
   - "Discord.py"
   - "Asyncio"
   - "REST APIs"
+highlights:
+  - "Handles concurrent server requests through Python's asyncio and discord.py event loop."
+  - "Integrates external public APIs to fetch dynamic data and deliver formatted embeds directly to channels."
+  - "Configured modular command cogs for easy expansion, testing, and isolated command logic."
 ---
 
 ## Asynchronous Command Dispatching
