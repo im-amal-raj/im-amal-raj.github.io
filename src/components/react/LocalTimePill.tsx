@@ -26,10 +26,6 @@ export default function LocalTimePill() {
       className="inline-flex min-h-[44px] items-center gap-2.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-xs font-[family-name:var(--font-mono)] text-[var(--color-text-secondary)] shadow-xs transition-colors hover:border-[var(--color-text-primary)]"
       title="Current local time in Kerala, India (IST)"
     >
-      <span className="relative flex h-2 w-2">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-accent)] opacity-75" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-      </span>
       <span>
         Kerala, IN
         {timeStr ? ` · ${timeStr} IST` : ' · IST'}
